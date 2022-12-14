@@ -1,8 +1,9 @@
+
 [
     {
         "LocusId": "TEST",
-        "LocusStructure": "(CAT)*",
-        "ReferenceRegion": "chr21:5703-5708",
+        "LocusStructure": "(GGG)*",
+        "ReferenceRegion": "chr21:64290311-64290409",
         "VariantType": "Repeat",
         "NormalMax": 15,
         "PathologicMin": 25
