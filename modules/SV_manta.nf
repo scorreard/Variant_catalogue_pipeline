@@ -34,7 +34,8 @@ process SV_manta {
 		ln -s \$manta_vcf .
 		ln -s \$manta_index .
 	else
-	        awk '\$2 > 10000000 || \$1 ~/(M|MT)\$/ { print \$1"\t0\t"\$2 }' $reference_index | gunzip -c > cr.bed.gz
+	        awk '\$2 > 10000000 || \$1 ~/(M|MT)\$/ { print \$1"\t0\t"\$2 }' $reference_index > cr.bed
+		gunzip -c cr.bed > cr.bed.gz
                 tabix cr.bed.gz
 		
         	echo ${bam.simpleName}
