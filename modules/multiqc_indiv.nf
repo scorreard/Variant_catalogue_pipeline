@@ -23,6 +23,6 @@ process multiqc_indiv {
 
 	script :
 	"""
-	multiqc /home/scorreard/Variant_catalogue_test/$params.outdir_ind/${assembly}/${batch}/${run}/QC/
+	multiqc $params.outdir_ind/${assembly}/${batch}/${run}/QC/
 	"""
 }
