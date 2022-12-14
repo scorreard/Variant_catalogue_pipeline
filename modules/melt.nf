@@ -39,7 +39,7 @@ process melt {
 	else
 		mkdir -p \${sample_name}
 	
-		java -Xmx8G -jar ${params.Melt_dir}/MELT.jar Single \
+		java -Xmx8G -jar MELT.jar Single \
 		-b hs37d5/NC_007605 \
 		-t ${transposon_file}  \
 		-h ${reference} \
