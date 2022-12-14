@@ -10,7 +10,6 @@
 // Process should be skipped if bam file already generated
 
 process align_sort_output_bam {
-	label 'conda_annotate'
 	tag "$sampleId"
 
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/BAM/", mode: 'copyNoFollow'
