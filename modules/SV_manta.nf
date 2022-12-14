@@ -45,7 +45,7 @@ process SV_manta {
 		--bam ${bam} \
 		--referenceFasta ${reference} \
 		--runDir . \
-		--callRegions ${cr_bed}
+		--callRegions cr.bed.gz
 
 		python2 ./runWorkflow.py \
 		-j ${task.cpus} \
