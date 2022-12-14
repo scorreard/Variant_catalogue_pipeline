@@ -37,7 +37,7 @@ process expansion_hunter {
 		ln -s \$exp_hunt_vcf .
 		ln -s \$exp_hunt_index .
 	else
-		${params.ExpansionHunter_dir}/ExpansionHunter \
+		ExpansionHunter \
 		--output-prefix ${bam.simpleName} \
 		--reference $reference  \
 		--reads ${bam} \
