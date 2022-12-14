@@ -1,0 +1,8 @@
+[
+    {
+        "LocusId": "CSTB",
+        "LocusStructure": "(CGCGGGGCGGGG)*",
+        "ReferenceRegion": "chr21:43776443-43776479",
+        "VariantType": "Repeat"
+    }
+]
