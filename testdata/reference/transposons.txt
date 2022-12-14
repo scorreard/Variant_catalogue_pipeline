@@ -1,0 +1,3 @@
+Variant_catalogue_pipeline/testdata/reference/LINE_MELT.zip
+Variant_catalogue_pipeline/testdata/reference/ALU_MELT.zip
+Variant_catalogue_pipeline/testdata/reference/SVA_MELT.zip
