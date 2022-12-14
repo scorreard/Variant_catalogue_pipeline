@@ -1,8 +1,10 @@
 [
     {
-        "LocusId": "CSTB",
-        "LocusStructure": "(CGCGGGGCGGGG)*",
-        "ReferenceRegion": "chr21:43776443-43776479",
-        "VariantType": "Repeat"
+        "LocusId": "TEST",
+        "LocusStructure": "(CAT)*",
+        "ReferenceRegion": "chr22:5703-5708",
+        "VariantType": "Repeat",
+        "NormalMax": 15,
+        "PathologicMin": 25
     }
 ]
