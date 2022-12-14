@@ -96,10 +96,10 @@ workflow SV {
 //		expansion_hunter(bam, bai, reference, reference_index, variant_catalog, assembly, batch, run)
 
                 // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
-		STR_vcfs_txt(expansion_hunter.out.vcf.collect(), assembly, batch, run, STR)
-  		STR_merge_samples(STR_vcfs_txt.out, assembly, batch, run, STR)
-		Hail_STR (STR_merge_samples.out.vcf, sample_sex_file, assembly, batch, run) 
-                STR_data_organization(STR_merge_samples.out.vcf, variant_catalog, assembly, run, STR)
+//		STR_vcfs_txt(expansion_hunter.out.vcf.collect(), assembly, batch, run, STR)
+//  		STR_merge_samples(STR_vcfs_txt.out, assembly, batch, run, STR)
+//		Hail_STR (STR_merge_samples.out.vcf, sample_sex_file, assembly, batch, run) 
+  //              STR_data_organization(STR_merge_samples.out.vcf, variant_catalog, assembly, run, STR)
 
 		// Mobile Element Insertions (MEIs)
                 // Sample specific (Do not need to be run for a previously processed sample)
