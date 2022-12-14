@@ -8,7 +8,6 @@
 // Used multiple times (reference genome and MT specific reference genomes (non shifted and shifted))
 
 process bwa_index {
-	label 'conda_annotate'
         tag "$genome"
 
 	input:
