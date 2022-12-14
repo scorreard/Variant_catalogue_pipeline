@@ -41,8 +41,7 @@ process expansion_hunter {
 		--output-prefix ${bam.simpleName} \
 		--reference $reference  \
 		--reads ${bam} \
-		--variant-catalog ${variant_catalog} \
-		-n ${task.cpus} 
+		--variant-catalog ${variant_catalog}
 	
 		bcftools view -O z -o ${bam.simpleName}_str_noID.vcf.gz ${bam.simpleName}.vcf
 		bcftools index ${bam.simpleName}_str_noID.vcf.gz
