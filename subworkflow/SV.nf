@@ -43,8 +43,8 @@ workflow SV {
 	reference       			= file (params.ref)
 	reference_index 			= file (params.ref_index)
         transposon_file				= file (params.transposon_file)
-        cr_bed 					= file (params.cr_bed)
-        cr_bed_index                            = file (params.cr_bed_index)
+ //       cr_bed 					= file (params.cr_bed)
+   //     cr_bed_index                            = file (params.cr_bed_index)
 	genes_file				= file (params.genes_file)
 	variant_catalog				= file (params.variant_catalog)
 	chr					= params.chrom
@@ -75,7 +75,8 @@ workflow SV {
 		//Structural Varaints (SV)
                 // Sample specific (Do not need to be run for a previously processed sample)
 		sm = SV_smoove(bam, bai, reference, reference_index, assembly, batch, run)
-		mr = SV_manta(bam, bai, reference, reference_index, cr_bed, cr_bed_index, assembly, batch, run)
+//		mr = SV_manta(bam, bai, reference, reference_index, cr_bed, cr_bed_index, assembly, batch, run)
+		mr = SV_manta(bam, bai, reference, reference_index, assembly, batch, run)
 		sv_groups = mr.concat(sm) | groupTuple(by: 2)
 		svs = SV_concat_by_sample(sv_groups, assembly, batch, run) | collect
 		sv_merged = SV_jasmine(svs, reference, reference_index, assembly, batch, run)
