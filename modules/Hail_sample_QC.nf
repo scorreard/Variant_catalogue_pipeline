@@ -34,7 +34,7 @@ process Hail_sample_QC {
 	import hail as hl
 	from hail.plot import output_notebook, show
 	hl.init(tmp_dir=temp_directory)
-	output_notebook()
+	#output_notebook()
 
 	from hail.plot import show
 	from pprint import pprint
