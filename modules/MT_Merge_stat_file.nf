@@ -29,7 +29,7 @@ process MT_Merge_stat_file {
 	if [ -a $params.outdir_ind/${assembly}/*/${run}/MT/Sample/\${sample_name}_MT_merged_filtered_trimmed_filtered_sites.vcf.gz ]; then
 		touch \${sample_name}_MT_merged.stats
         else
-        	gatk MergeMutectStats \
+        	gatk --java-options "-Xmx${avail_mem}g" MergeMutectStats  \
         	-stats ${MT_call_variants_stat} \
         	-stats \${sample_name}_sorted_chrM_Homo_sapiens_assembly38.chrM.shifted_by_8000_bases_marked_duplicates_Mutect2.vcf.gz.stats \
         	-O \${sample_name}_MT_merged.stats
