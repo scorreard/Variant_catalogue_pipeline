@@ -17,7 +17,7 @@ process shift_back {
 
 	script:
 	"""
-	#!/usr/bin/env Rscript
+	#!/usr/bin/env R
 	sample_name=\$(echo ${MT_shifted_CollectMetrics.simpleName} | sed 's/_.*//' )
 	if [ -a $params.outdir_ind/${assembly}/${batch}/${run}/MT/QC/\${sample_name}_per_base_coverage.tsv ]; then
 		per_base_coverage=\$(find $params.outdir_ind/${assembly}/*/${run}/MT/QC/ -name \${sample_name}_per_base_coverage.tsv)
