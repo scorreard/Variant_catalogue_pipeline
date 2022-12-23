@@ -121,7 +121,7 @@ workflow MT {
 		MT_LeftAlignAndTrimVariants(ref_MT_fasta, ref_MT_fasta_index, ref_MT_fasta_dict, MT_Filter_Mutect_Calls.out.vcf, MT_Filter_Mutect_Calls.out.index, assembly, batch, run)
 		MT_FilterOut_sites(ref_MT_fasta, ref_MT_fasta_index, ref_MT_fasta_dict, MT_LeftAlignAndTrimVariants.out.vcf, MT_LeftAlignAndTrimVariants.out.index, blacklist_sites_hg38_MT_file, blacklist_sites_hg38_MT_index_file, assembly, batch, run)
                 MT_haplocheck(MT_FilterOut_sites.out.vcf, assembly, batch, run, haplocheck_path)
-                MT_Step3_metadata_sample(mosdepth, MT_haplocheck.out.file, assembly, batch, run)
+                MT_Step3_metadata_sample(mosdepth, MT_haplocheck.out.file, assembly, batch, run, path_R_libraries)
 
                 // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
 		MT_Step2_participant_data(MT_FilterOut_sites.out.sample_MT_Step2_participant_data.collect(), MT_FilterOut_sites.out.Sample_list.collect(), assembly, batch, run)
