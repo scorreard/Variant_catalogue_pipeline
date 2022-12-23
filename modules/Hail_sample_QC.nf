@@ -397,9 +397,7 @@ def calc_removed_samples(mt, mt_var, stat_table) :
 
 
 def report_stats():
-    """
-    Generate output report with basic stats.
-    """
+    #Generate output report with basic stats.
     out_stats = hl.hadoop_open(f"sample_QC.txt", "w")
     # Report numbers of filtered samples
     out_stats.write(
