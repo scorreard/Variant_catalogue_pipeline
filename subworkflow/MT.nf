@@ -109,7 +109,7 @@ workflow MT {
 		MarkDuplicates_index_shifted(align_to_MT_shifted.out.align_to_MT_bam, align_to_MT_shifted.out.align_to_MT_bai, assembly, batch, run, MarkDuplicates_shifted.out.bam.collect())
 		Picard_CollectWgsMetrics_MT(ref_MT_fasta, ref_MT_fasta_index, non_control_region_interval_list, align_to_MT.out.align_to_MT_bam, align_to_MT.out.align_to_MT_bai, assembly, batch, run)
 		Picard_CollectWgsMetrics_MT_shifted(ref_MT_shifted_fasta, ref_MT_shifted_fasta_index, control_region_shifted_reference_interval_list, align_to_MT_shifted.out.align_to_MT_bam, align_to_MT_shifted.out.align_to_MT_bai, assembly, batch, run)
-		shift_back(Picard_CollectWgsMetrics_MT_shifted.out, Picard_CollectWgsMetrics_MT.out.collect(), assembly, batch, run, path_R_libraries)
+		shift_back(Picard_CollectWgsMetrics_MT_shifted.out, Picard_CollectWgsMetrics_MT.out.collect(), assembly, batch, run)
 		MT_Step1_input_tsv(shift_back.out.Sample_MT_Step1_input_tsv.collect(), assembly, batch, run)
 		MT_call_variants(ref_MT_fasta, ref_MT_fasta_index, ref_MT_fasta_dict, MarkDuplicates.out.bam, MarkDuplicates_index.out.bai.collect(), Mitochondrial_chromosome, assembly, batch, run)
 		MT_call_variants_shifted(ref_MT_shifted_fasta, ref_MT_shifted_fasta_index, ref_MT_shifted_fasta_dict, MarkDuplicates_shifted.out.bam, MarkDuplicates_index_shifted.out.bai.collect(), Mitochondrial_chromosome, assembly, batch, run)
@@ -121,7 +121,7 @@ workflow MT {
 		MT_LeftAlignAndTrimVariants(ref_MT_fasta, ref_MT_fasta_index, ref_MT_fasta_dict, MT_Filter_Mutect_Calls.out.vcf, MT_Filter_Mutect_Calls.out.index, assembly, batch, run)
 		MT_FilterOut_sites(ref_MT_fasta, ref_MT_fasta_index, ref_MT_fasta_dict, MT_LeftAlignAndTrimVariants.out.vcf, MT_LeftAlignAndTrimVariants.out.index, blacklist_sites_hg38_MT_file, blacklist_sites_hg38_MT_index_file, assembly, batch, run)
                 MT_haplocheck(MT_FilterOut_sites.out.vcf, assembly, batch, run, haplocheck_path)
-                MT_Step3_metadata_sample(mosdepth, MT_haplocheck.out.file, assembly, batch, run, path_R_libraries)
+                MT_Step3_metadata_sample(mosdepth, MT_haplocheck.out.file, assembly, batch, run)
 
                 // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
 		MT_Step2_participant_data(MT_FilterOut_sites.out.sample_MT_Step2_participant_data.collect(), MT_FilterOut_sites.out.Sample_list.collect(), assembly, batch, run)
