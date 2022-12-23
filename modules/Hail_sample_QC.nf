@@ -29,7 +29,7 @@ process Hail_sample_QC {
 	# coding: utf-8
 	# Hail and plot initialisation
 
-	import sys
+import sys
 	temp_directory=$params.tmp_dir
 	import hail as hl
 	from hail.plot import output_notebook, show
