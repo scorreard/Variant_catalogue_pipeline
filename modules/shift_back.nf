@@ -23,7 +23,7 @@ process shift_back {
 		ln -s \$per_base_coverage .
 		touch \${sample_name}_MT_Step1_input_tsv.tsv
 	else
-		#!/usr/bin/env Rscript ../../../modules/shift_back.R $MT_shifted_CollectMetrics \${sample_name}_sorted_chrM_Homo_sapiens_assembly38_collect_wgs_metrics_non_control_region.chrM.interval_list.tsv
+		#!/usr/bin/env Rscript ${projectDir}/modules/shift_back.R $MT_shifted_CollectMetrics \${sample_name}_sorted_chrM_Homo_sapiens_assembly38_collect_wgs_metrics_non_control_region.chrM.interval_list.tsv
 		mv per_base_coverage.tsv \${sample_name}_per_base_coverage.tsv	
 
 		echo "\${sample_name}\t$params.outdir_ind/${assembly}/${batch}/${run}/MT/QC/\${sample_name}_per_base_coverage.tsv\t\${sample_name}" > \${sample_name}_MT_Step1_input_tsv.tsv
