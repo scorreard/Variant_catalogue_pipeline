@@ -35,6 +35,6 @@ process STR_data_organization {
 	mkdir -p \${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
 	export R_LIBS=\${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
 
-	Rscript ../../../modules/STR_data_organization.R $assembly ${STR_vcf} ${STR_catalogue}  $run ${var_type}
+	Rscript ${projectDir}/modules/STR_data_organization.R $assembly ${STR_vcf} ${STR_catalogue}  $run ${var_type}
 	"""
 }
