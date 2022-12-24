@@ -22,7 +22,7 @@ process SV_smoove {
 	val run
 
 	output:
-	tuple(file("${bam.simpleName}-smoove.vcf.gz"),file("${bam.simpleName}_smoove.vcf.gz.tbi"),val(bam.simpleName))	
+	file("${bam.simpleName}-smoove.vcf.gz")	
 	
 	script:
 	"""
