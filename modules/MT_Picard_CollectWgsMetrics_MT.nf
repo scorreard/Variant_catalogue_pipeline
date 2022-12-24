@@ -34,7 +34,7 @@ process Picard_CollectWgsMetrics_MT {
 		ln -s \$metric .
 	else
 		picard \
-        	-Xmx$3g \
+        	-Xmx3g \
         	CollectWgsMetrics \
 		-I ${bam_MT} \
         	--PER_BASE_COVERAGE ${bam_MT.simpleName}_collect_wgs_metrics_${interval_list}.tsv \
