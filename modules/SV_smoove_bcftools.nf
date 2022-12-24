@@ -33,7 +33,7 @@ process SV_smoove_bcftools {
 		sample_name=\$(echo ${smoove_vcf.simpleName} | cut -d _ -f 1)
 		echo \$sample_name > sample.txt
 
-		bcftools view -O u -o ${smoove_vcf.simpleName}.R.bcf ${smoove_vcf.simpleName}-smoove.vcf.gz
+		bcftools view -O u -o ${smoove_vcf.simpleName}.R.bcf ${smoove_vcf}
 		bcftools sort --temp-dir $params.outdir_ind/${assembly}/${batch}/${run}/SV/TMP  -m 2G -O z -o ${smoove_vcf.simpleName}-smoove.vcf.gz  ${smoove_vcf.simpleName}.R.bcf
 		bcftools reheader -s sample.txt ${smoove_vcf.simpleName}-smoove.vcf.gz > ${smoove_vcf.simpleName}_smoove.vcf.gz
 		bcftools index --tbi ${smoove_vcf.simpleName}_smoove.vcf.gz
