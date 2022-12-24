@@ -1,0 +1,18 @@
+[
+    {
+        "LocusId": "NOP56",
+        "LocusStructure": "(GGCCTG)*(CGCCTG)*",
+        "ReferenceRegion": [
+            "20:2652733-2652757",
+            "20:2652757-2652775"
+        ],
+        "VariantId": [
+            "NOP56",
+            "NOP56_CGCCTG"
+        ],
+        "VariantType": [
+            "Repeat",
+            "Repeat"
+        ]
+    } 
+]
