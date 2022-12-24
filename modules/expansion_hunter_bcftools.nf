@@ -10,7 +10,7 @@
 
 
 process expansion_hunter_bcftools {
-	tag "${bam.simpleName}"
+	tag "${EH_vcf.simpleName}"
 
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/STR/Sample/", mode: 'copyNoFollow'
 
