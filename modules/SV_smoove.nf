@@ -22,7 +22,7 @@ process SV_smoove {
 	val run
 
 	output:
-	file("${bam.simpleName}-smoove.vcf.gz")	
+	file("${bam.simpleName}.vcf.gz")	
 	
 	script:
 	"""
@@ -38,6 +38,9 @@ process SV_smoove {
 		--fasta ${reference}\
 		${bam}
   		##-p ${task.cpus} 
+	
+	mv ${bam.simpleName}-smoove.vcf.gz ${bam.simpleName}.vcf.gz
+	
 	fi
 	"""
 }
