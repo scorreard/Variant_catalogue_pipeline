@@ -80,11 +80,11 @@ workflow SV {
 		sv_groups = mr.concat(sm) | groupTuple(by: 2)
 		svs = SV_concat_by_sample(sv_groups, assembly, batch, run) | collect
 		sv_merged = SV_jasmine(svs, reference, reference_index, assembly, batch, run)
-		genotyped = SV_paragraph_duphold(sv_merged, bam, bai, reference, reference_index, assembly, batch, run)
+//		genotyped = SV_paragraph_duphold(sv_merged, bam, bai, reference, reference_index, assembly, batch, run)
 
                 // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
-		SV_vcfs_txt(SV_paragraph_duphold.out.vcf.collect(), assembly, batch, run, SV)
-		SV_merge_samples(SV_vcfs_txt.out, assembly, batch, run, SV)
+//		SV_vcfs_txt(SV_paragraph_duphold.out.vcf.collect(), assembly, batch, run, SV)
+//		SV_merge_samples(SV_vcfs_txt.out, assembly, batch, run, SV)
 //                Hail_SV_QC (SV_merge_samples.out.vcf, sample_sex_file, assembly, batch, run)
 //		SV_annotation(Hail_SV_QC.out.vcf_SV_filtered_frequ_only, Hail_SV_QC.out.index_SV_filtered_frequ_only, vep_cache_merged, vep_cache_merged_version, assembly, run, assembly, CADD_1_6_whole_genome_SNVs, CADD_1_6_whole_genome_SNVs_index, CADD_1_6_InDels, CADD_1_6_InDels_index, spliceai_snv, spliceai_snv_index, spliceai_indel, spliceai_indel_index, chr, SV, reference, dir_plugin)
 //                SV_data_organization(SV_annotation.out.annotation_vcf, assembly, run, SV, severity_table)
@@ -95,8 +95,8 @@ workflow SV {
 		expansion_hunter(bam, bai, reference, reference_index, variant_catalog, assembly, batch, run)
 
                 // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
-//		STR_vcfs_txt(expansion_hunter.out.vcf.collect(), assembly, batch, run, STR)
-//  		STR_merge_samples(STR_vcfs_txt.out, assembly, batch, run, STR)
+		STR_vcfs_txt(expansion_hunter.out.vcf.collect(), assembly, batch, run, STR)
+  		STR_merge_samples(STR_vcfs_txt.out, assembly, batch, run, STR)
 //		Hail_STR (STR_merge_samples.out.vcf, sample_sex_file, assembly, batch, run) 
   //              STR_data_organization(STR_merge_samples.out.vcf, variant_catalog, assembly, run, STR)
 
