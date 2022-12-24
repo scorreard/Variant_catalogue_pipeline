@@ -35,6 +35,6 @@ process MEI_data_organization {
 	mkdir -p \${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
 	export R_LIBS=\${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
 
-	Rscript ../../../modules/MEI_data_organization.R $assembly ${MEI_annot_merged} $run ${var_type}
+	Rscript ${projectDir}/modules/MEI_data_organization.R $assembly ${MEI_annot_merged} $run ${var_type}
 	"""
 }
