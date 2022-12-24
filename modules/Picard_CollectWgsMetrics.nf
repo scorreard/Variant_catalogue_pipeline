@@ -31,9 +31,8 @@ process Picard_CollectWgsMetrics {
 		picard_collect_wgs_metrics=\$(find $params.outdir_ind/${assembly}/*/${run}/QC/Individuals/${bam.simpleName}/Picard_Metrics/ -name ${bam.simpleName}_collect_wgs_metrics.txt)
 		ln -s \$picard_collect_wgs_metrics .
 	else
-		picard \
-        	-Xmx3g \
-        	CollectWgsMetrics \
+		gatk CollectWgsMetrics \
+		--java-options "-Xmx8G" \
 		-I ${bam} \
 		-O ${bam.simpleName}_collect_wgs_metrics.txt \
 		-R ${ref_genome}
