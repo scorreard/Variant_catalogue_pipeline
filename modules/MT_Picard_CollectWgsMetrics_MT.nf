@@ -33,9 +33,8 @@ process Picard_CollectWgsMetrics_MT {
 		metric=\$(find $params.outdir_ind/${assembly}/*/${run}/MT/QC/*/ -name \${sample_name}*_collect_wgs_metrics_${interval_list}.tsv)
 		ln -s \$metric .
 	else
-		picard \
-        	-Xmx3g \
-        	CollectWgsMetrics \
+		gatk CollectHsMetrics \
+        	--java-options "-Xmx8G" \
 		-I ${bam_MT} \
         	--PER_BASE_COVERAGE ${bam_MT.simpleName}_collect_wgs_metrics_${interval_list}.tsv \
         	-R ${ref_genome_MT_file} \
