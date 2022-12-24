@@ -9,6 +9,8 @@
 // Load the modules for the SV workflow
 
 include { SV_smoove } from "./../modules/SV_smoove"
+include { SV_smoove_bcftools } from "./../modules/SV_smoove_bcftools"
+
 include { SV_manta } from "./../modules/SV_manta"
 include { SV_concat_by_sample } from "./../modules/SV_concat_by_sample"
 include { SV_jasmine } from "./../modules/SV_jasmine"
@@ -72,7 +74,8 @@ workflow SV {
 	main :
 		//Structural Varaints (SV)
                 // Sample specific (Do not need to be run for a previously processed sample)
-		sm = SV_smoove(bam, bai, reference, reference_index, assembly, batch, run)
+		SV_smoove(bam, bai, reference, reference_index, assembly, batch, run)
+		sm = SV_smoove_bcftools(SV_smoove.out, assembly, batch, run)
 		mr = SV_manta(bam, bai, reference, reference_index, assembly, batch, run)
 		sv_groups = mr.concat(sm) | groupTuple(by: 2)
 		svs = SV_concat_by_sample(sv_groups, assembly, batch, run) | collect
