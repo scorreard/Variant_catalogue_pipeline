@@ -10,7 +10,6 @@
 
 
 process expansion_hunter {
-	label 'conda_annotate'
 	tag "${bam.simpleName}"
 
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/STR/Sample/", mode: 'copyNoFollow'
@@ -26,8 +25,7 @@ process expansion_hunter {
         val run
 
 	output:
-	path '*_str.vcf.gz', emit : vcf
-        path '*_str.vcf.gz.tbi', emit : vcf_index
+	path '*vcf', emit : EH_vcf
 
 	script:
 	"""
@@ -42,11 +40,6 @@ process expansion_hunter {
 		--reference $reference  \
 		--reads ${bam} \
 		--variant-catalog ${variant_catalog}
-	
-		bcftools view -O z -o ${bam.simpleName}_str_noID.vcf.gz ${bam.simpleName}.vcf
-		bcftools index ${bam.simpleName}_str_noID.vcf.gz
-		bcftools annotate --set-id '%CHROM\\_%POS\\_%END\\_%REF\\_%ALT' -O z -o ${bam.simpleName}_str.vcf.gz ${bam.simpleName}_str_noID.vcf.gz
-		bcftools index --tbi ${bam.simpleName}_str.vcf.gz
 	fi
 	"""
 }
