@@ -18,6 +18,8 @@ include { SV_paragraph_duphold } from "./../modules/SV_paragraph_duphold"
 
 include { samtools_fixmate } from "./../modules/samtools_fixmate"
 include { expansion_hunter } from "./../modules/expansion_hunter"
+include { expansion_hunter_bcftools } from "./../modules/expansion_hunter_bcftools"
+
 include { melt } from "./../modules/melt"
 
 include { list_vcfs_txt as SV_vcfs_txt; list_vcfs_txt as STR_vcfs_txt; list_vcfs_txt as MEI_vcfs_txt } from "./../modules/list_vcfs_txt"
@@ -93,9 +95,11 @@ workflow SV {
 		//Short Tandem Repeats (STR)
                 // Sample specific (Do not need to be run for a previously processed sample)
 		expansion_hunter(bam, bai, reference, reference_index, variant_catalog, assembly, batch, run)
+		expansion_hunter_bcftools(expansion_hunter.out.EH_vcf, assembly, batch, run)
+
 
                 // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
-		STR_vcfs_txt(expansion_hunter.out.vcf.collect(), assembly, batch, run, STR)
+		STR_vcfs_txt(expansion_hunter_bcftools.out.vcf.collect(), assembly, batch, run, STR)
   		STR_merge_samples(STR_vcfs_txt.out, assembly, batch, run, STR)
 //		Hail_STR (STR_merge_samples.out.vcf, sample_sex_file, assembly, batch, run) 
   //              STR_data_organization(STR_merge_samples.out.vcf, variant_catalog, assembly, run, STR)
