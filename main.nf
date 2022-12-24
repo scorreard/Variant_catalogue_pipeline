@@ -54,7 +54,9 @@ workflow{
 	main :
 //	Initialisation()
         Mapping()
-	SNV(Mapping.out.bam_sorted, Mapping.out.bam_sorted_index)
+//	SNV(Mapping.out.bam_sorted, Mapping.out.bam_sorted_index)
 //        MT(Mapping.out.bam_sorted, Mapping.out.bam_sorted_index, Mapping.out.mosdepth_output)
-	SV(Mapping.out.bam_sorted, Mapping.out.bam_sorted_index, SNV.out.sample_sex_file)
+	SV(Mapping.out.bam_sorted, Mapping.out.bam_sorted_index)
+//		SV(Mapping.out.bam_sorted, Mapping.out.bam_sorted_index, SNV.out.sample_sex_file)
+
 }
