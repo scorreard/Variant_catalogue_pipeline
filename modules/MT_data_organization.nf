@@ -40,6 +40,6 @@ process MT_data_organization {
 	mkdir -p \${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
 	export R_LIBS=\${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
 
-	Rscript ../../../modules/MT_data_organization.R $assembly $gnomad_MT_frequ $MT_annot $run $severity_table
+	Rscript ${projectDir}/modules/MT_data_organization.R $assembly $gnomad_MT_frequ $MT_annot $run $severity_table
 	"""
 }
