@@ -37,6 +37,6 @@ process SV_data_organization {
 	mkdir -p \${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
 	export R_LIBS=\${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
 
-	Rscript ../../../modules/SV_data_organization.R $assembly ${SV_annot_merged} $run ${var_type} $severity_table
+	Rscript ${projectDir}/modules/SV_data_organization.R $assembly ${SV_annot_merged} $run ${var_type} $severity_table
 	"""
 }
