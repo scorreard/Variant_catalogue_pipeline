@@ -109,7 +109,7 @@ workflow MT {
 		MarkDuplicates_index_shifted(align_to_MT_shifted.out.align_to_MT_bam, align_to_MT_shifted.out.align_to_MT_bai, assembly, batch, run, MarkDuplicates_shifted.out.bam.collect())
 		Picard_CollectWgsMetrics_MT(ref_MT_fasta, ref_MT_fasta_index, non_control_region_interval_list, align_to_MT.out.align_to_MT_bam, align_to_MT.out.align_to_MT_bai, assembly, batch, run)
 		Picard_CollectWgsMetrics_MT_shifted(ref_MT_shifted_fasta, ref_MT_shifted_fasta_index, control_region_shifted_reference_interval_list, align_to_MT_shifted.out.align_to_MT_bam, align_to_MT_shifted.out.align_to_MT_bai, assembly, batch, run)
-		shift_back(Picard_CollectWgsMetrics_MT_shifted.out, Picard_CollectWgsMetrics_MT.out.collect(), assembly, batch, run, path_R_libraries)
+		shift_back(Picard_CollectWgsMetrics_MT_shifted.out, Picard_CollectWgsMetrics_MT.out.collect(), assembly, batch, run)
 		MT_Step1_input_tsv(shift_back.out.Sample_MT_Step1_input_tsv.collect(), assembly, batch, run)
 		MT_call_variants(ref_MT_fasta, ref_MT_fasta_index, ref_MT_fasta_dict, MarkDuplicates.out.bam, MarkDuplicates_index.out.bai.collect(), Mitochondrial_chromosome, assembly, batch, run)
 		MT_call_variants_shifted(ref_MT_shifted_fasta, ref_MT_shifted_fasta_index, ref_MT_shifted_fasta_dict, MarkDuplicates_shifted.out.bam, MarkDuplicates_index_shifted.out.bai.collect(), Mitochondrial_chromosome, assembly, batch, run)
