@@ -12,7 +12,7 @@ process SV_paragraph_duphold {
 
 //	Issue with the script from paragraph   [E::idx_find_and_load] Could not retrieve index file for 'paragraph_output/variants.vcf.gz'
 // 	According to github, workaround is to modify multigrmpy.py : https://github.com/Illumina/paragraph/issues/59
-	errorStrategy 'ignore' // TODO: change after debugging is done
+//	errorStrategy 'ignore' // TODO: change after debugging is done
 
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/SV/Sample/paragraph", mode: 'copy', pattern : '*_genotypes_setid.vcf.gz*'
 
