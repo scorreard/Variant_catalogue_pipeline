@@ -32,7 +32,7 @@ process Hail_STR {
 
 	script:
 	"""
-        #!/usr/bin/env python ../../../modules/Hail_STR.py $vcf_sample_filtered $sample_sex_file $params.tmp_dir
+        #!/usr/bin/env python ${projectDir}/modules/Hail_STR.py $vcf_sample_filtered $sample_sex_file $params.tmp_dir
 	"""
 }
 
