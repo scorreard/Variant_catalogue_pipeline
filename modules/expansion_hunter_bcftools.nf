@@ -34,8 +34,7 @@ process expansion_hunter_bcftools {
 	else	
 		bcftools view -O z -o ${EH_vcf.simpleName}_str_noID.vcf.gz ${EH_vcf}
 		bcftools index ${EH_vcf.simpleName}_str_noID.vcf.gz
-		tabix ${EH_vcf.simpleName}_str_noID.vcf.gz
-		bcftools annotate --set-id '%CHROM\\_%POS\\_%END\\_%REF\\_%ALT' -O z -o ${EH_vcf.simpleName}_str.vcf.gz ${EH_vcf.simpleName}_str_noID.vcf.gz
+		bcftools annotate --set-id '%#CHROM\\_%POS\\_%END\\_%REF\\_%ALT' -O z -o ${EH_vcf.simpleName}_str.vcf.gz ${EH_vcf.simpleName}_str_noID.vcf.gz
 		bcftools index --tbi ${EH_vcf.simpleName}_str.vcf.gz
 	fi
 	"""
