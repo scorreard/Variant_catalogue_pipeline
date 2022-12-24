@@ -95,19 +95,19 @@ workflow SV {
 		//Short Tandem Repeats (STR)
                 // Sample specific (Do not need to be run for a previously processed sample)
 		expansion_hunter(bam, bai, reference, reference_index, variant_catalog, assembly, batch, run)
-		expansion_hunter_bcftools(expansion_hunter.out.EH_vcf, assembly, batch, run)
-
+//		expansion_hunter_bcftools(expansion_hunter.out.EH_vcf, assembly, batch, run)
+//NEED EXPANSIONHUNTER V5
 
                 // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
-		STR_vcfs_txt(expansion_hunter_bcftools.out.vcf.collect(), assembly, batch, run, STR)
-  		STR_merge_samples(STR_vcfs_txt.out, assembly, batch, run, STR)
+//		STR_vcfs_txt(expansion_hunter_bcftools.out.vcf.collect(), assembly, batch, run, STR)
+//  		STR_merge_samples(STR_vcfs_txt.out, assembly, batch, run, STR)
 //		Hail_STR (STR_merge_samples.out.vcf, sample_sex_file, assembly, batch, run) 
   //              STR_data_organization(STR_merge_samples.out.vcf, variant_catalog, assembly, run, STR)
 
 		// Mobile Element Insertions (MEIs)
                 // Sample specific (Do not need to be run for a previously processed sample)
 		samtools_fixmate(bam, bai, assembly, batch, run)
-//		melt(samtools_fixmate.out.samples_fixmate_bam, samtools_fixmate.out.samples_fixmate_bam_index, reference, reference_index, transposon_file, genes_file, assembly, batch, run)
+		melt(samtools_fixmate.out.samples_fixmate_bam, samtools_fixmate.out.samples_fixmate_bam_index, reference, reference_index, transposon_file, genes_file, assembly, batch, run)
                 
 		// Aggregated steps (Need to be run everytime a new sample is added to the cohort)
 //		MEI_vcfs_txt(melt.out.vcf.collect(), assembly, batch, run, MEI)
