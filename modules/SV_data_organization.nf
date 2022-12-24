@@ -28,15 +28,6 @@ process SV_data_organization {
 
 	script:
 	"""
-	source /cm/shared/BCCHR-apps/env_vars/unset_BCM.sh
-	source /cvmfs/soft.computecanada.ca/config/profile/bash.sh
-	module load StdEnv/2020
-	module load r/4.1.2
-
-	Silent_Genomes_R=/mnt/common/SILENT/Act3/R/
-	mkdir -p \${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
-	export R_LIBS=\${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
-
 	Rscript ${projectDir}/modules/SV_data_organization.R $assembly ${SV_annot_merged} $run ${var_type} $severity_table
 	"""
 }
