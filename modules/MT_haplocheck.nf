@@ -10,6 +10,12 @@
 process MT_haplocheck {
 	tag "${MT_FilterOut_sites_vcf.simpleName}"
 
+    conda "bioconda::haplocheck=1.3.3"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/haplocheck:1.3.3--h4a94de4_0':
+        'quay.io/biocontainers/haplocheck:1.3.3--h4a94de4_0' }"
+
+
 	input :
 	file MT_FilterOut_sites_vcf
 	val assembly
@@ -26,7 +32,7 @@ process MT_haplocheck {
 	if [ -a $params.outdir_ind/${assembly}/*/${run}/MT/Sample/\${sample_name}_MT_merged_filtered_trimmed_filtered_sites.vcf.gz ]; then
 		touch ${MT_FilterOut_sites_vcf.simpleName}_haplocheck
 	else
-		$haplocheck_path --out ${MT_FilterOut_sites_vcf.simpleName}_haplocheck ${MT_FilterOut_sites_vcf}
+		haplocheck --out ${MT_FilterOut_sites_vcf.simpleName}_haplocheck ${MT_FilterOut_sites_vcf}
 	fi
 	"""
 }
