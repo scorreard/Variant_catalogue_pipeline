@@ -21,7 +21,6 @@ process MT_haplocheck {
 	val assembly
 	val batch
 	val run
-	val haplocheck_path
 
 	output :
 	path '*_haplocheck', emit : file
