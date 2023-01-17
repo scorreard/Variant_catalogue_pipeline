@@ -3,7 +3,7 @@ args <- commandArgs(trailingOnly = TRUE)
 #.libPaths(args[3])
 #library(dplyr)
 library(stringr)
-library(tidyr)
+#library(tidyr)
 
 
 mosdepth = read.table(args[1], header=T)
