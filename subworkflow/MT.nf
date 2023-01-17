@@ -62,7 +62,6 @@ workflow MT {
 	spliceai_indel				= file (params.spliceai_indel)
 	spliceai_indel_index			= file (params.spliceai_indel_index)
 	severity_table				= file (params.severity_table)
-	path_R_libraries			= params.path_R_libraries
 
 	// Load the MT specific files
 	Mitochondrial_chromosome                = params.Mitochondrial_chromosome
