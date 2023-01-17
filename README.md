@@ -1,3 +1,25 @@
+This repo is a clone from https://github.com/wassermanlab/Variant_catalogue_pipeline and a Work In Progress.
+
+https://github.com/wassermanlab/Variant_catalogue_pipeline must be considered as the main repo and be the one cited or mentionned if you use this code.
+
+The purpose of this repo is to migrate the variant catalogue pipeline to nf-core standard.
+
+The SV qnd MT pqrts of the pipeline can now run without installing any software locally
+
+To test the pipeline on you server, if you have nextflow installed, use :
+
+'''
+git clone https://github.com/scorreard/Variant_catalogue_pipeline.git
+nextflow run scorreard/Variant_catalogue_pipeline -r main -profile GRCh38
+'''
+
+
+
+
+
+
+
+
 # Variant catalogue Pipeline
 
 
