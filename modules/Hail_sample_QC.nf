@@ -9,6 +9,8 @@
 
 process Hail_sample_QC {
 
+    conda "bioconda::hail=0.2.58"
+    
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Aggregated/Hail/Samples/", mode: 'copy', pattern : '*.html'
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/vcf_post_hail/", mode: 'copy', pattern : '*filtered_samples.vcf.bgz'
 
