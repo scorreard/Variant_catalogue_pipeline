@@ -25,6 +25,7 @@ process Hail_sample_QC {
 
 	script:
 	"""
+	mkdir -p $params.tmp_dir
 	#!/usr/bin/env python ${projectDir}/modules/Hail_sample_QC.py $SNV_vcf $params.tmp_dir
 	"""
 }
