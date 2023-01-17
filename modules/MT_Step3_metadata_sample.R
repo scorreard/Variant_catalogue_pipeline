@@ -10,7 +10,7 @@ mosdepth = read.table(args[1], header=T)
 mt_mean_coverage = mosdepth$mean[mosdepth$chrom=='MT']
 wgs_mean_coverage= mosdepth$mean[mosdepth$chrom=='total']
 haplocheck = read.table(args[2], header=T)
-sample = unlist(strsplit(haplocheck$Sample, "_"))[1]
+sample = unlist(strsplit(as.character(haplocheck$Sample), "_"))[1]
 contamination = haplocheck$Contamination.Level
 if (contamination == 'ND') {
 	contamination = 0
