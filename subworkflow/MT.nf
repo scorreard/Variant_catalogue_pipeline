@@ -63,7 +63,6 @@ workflow MT {
 	spliceai_indel_index			= file (params.spliceai_indel_index)
 	severity_table				= file (params.severity_table)
 	path_R_libraries			= params.path_R_libraries
-	haplocheck_path				= params.haplocheck_path
 
 	// Load the MT specific files
 	Mitochondrial_chromosome                = params.Mitochondrial_chromosome
@@ -120,7 +119,7 @@ workflow MT {
 		MT_Filter_Mutect_Calls(ref_MT_fasta, ref_MT_fasta_index, ref_MT_fasta_dict, MT_norm.out.vcf, MT_norm.out.index, MT_Merge_stat_file.out.collect(), assembly, batch, run)
 		MT_LeftAlignAndTrimVariants(ref_MT_fasta, ref_MT_fasta_index, ref_MT_fasta_dict, MT_Filter_Mutect_Calls.out.vcf, MT_Filter_Mutect_Calls.out.index, assembly, batch, run)
 		MT_FilterOut_sites(ref_MT_fasta, ref_MT_fasta_index, ref_MT_fasta_dict, MT_LeftAlignAndTrimVariants.out.vcf, MT_LeftAlignAndTrimVariants.out.index, blacklist_sites_hg38_MT_file, blacklist_sites_hg38_MT_index_file, assembly, batch, run)
-                MT_haplocheck(MT_FilterOut_sites.out.vcf, assembly, batch, run, haplocheck_path)
+                MT_haplocheck(MT_FilterOut_sites.out.vcf, assembly, batch, run)
                 MT_Step3_metadata_sample(mosdepth, MT_haplocheck.out.file, assembly, batch, run, path_R_libraries)
 
                 // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
