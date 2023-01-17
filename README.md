@@ -6,7 +6,7 @@ https://github.com/wassermanlab/Variant_catalogue_pipeline **must** be considere
 
 The purpose of this repo is to migrate the variant catalogue pipeline to nf-core standard.
 
-The SNV and MT parts of the pipeline can now run without installing any software locally.
+Most of the SNV and MT parts of the pipeline can now run without installing any software locally.
 
 To test the pipeline on you server, you need nextflow and singularity installed, then use :
 
@@ -18,6 +18,7 @@ nextflow run scorreard/Variant_catalogue_pipeline -r main -profile GRCh38,singul
 ```
 
 The SV part and the GRCh37 profile do not work for the test.
+The MT hail part doesn't work for the test
 
 
 
