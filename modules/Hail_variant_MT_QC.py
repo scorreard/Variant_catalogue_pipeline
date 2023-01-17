@@ -15,7 +15,7 @@ artifact_prone_sites_bed =sys.argv[6]
 GRCh38_MT_local_fasta=sys.argv[7]
 GRCh38_MT_local_fai=sys.argv[8]
 mitotip_predictions_table=sys.argv[9]
-temp_directory=sys.argv[10]
+#temp_directory=sys.argv[10]
 
 
 #Created through the nextflow pipeline
@@ -38,7 +38,8 @@ from hail.utils.java import info
 from typing import Dict
 from hail.genetics import ReferenceGenome
 
-hl.init(tmp_dir=temp_directory)
+#hl.init(tmp_dir=temp_directory)
+
 output_notebook()
 
 
@@ -2319,6 +2320,10 @@ def main_step1(args):  # noqa: D103
     chunk_size = args.chunk_size
     overwrite = args.overwrite
 
+    
+    logger.info(
+        "Starting step1 pf hail analysis"
+    )
     if args.overwrite == False and hl.hadoop_exists(output_ht):
         logger.warning(
             "Overwrite is set to False but file already exists at %s, script will run but output will not be written",
