@@ -79,9 +79,6 @@ from textwrap import dedent
 
 from os.path import dirname
 
-from pyspark import SparkContext
-sc = SparkContext()
-
 
 logging.basicConfig(
     format="%(asctime)s (%(name)s %(lineno)s): %(message)s",
