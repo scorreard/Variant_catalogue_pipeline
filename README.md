@@ -17,7 +17,7 @@ git clone https://github.com/scorreard/Variant_catalogue_pipeline.git
 nextflow run scorreard/Variant_catalogue_pipeline -r main -profile GRCh38,singularity
 ```
 
-The SV pqrt and the GRCh37 profile do not work for the test.
+The SV part and the GRCh37 profile do not work for the test.
 
 
 
