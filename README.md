@@ -6,9 +6,9 @@ https://github.com/wassermanlab/Variant_catalogue_pipeline must be considered as
 
 The purpose of this repo is to migrate the variant catalogue pipeline to nf-core standard.
 
-The SV qnd MT pqrts of the pipeline can now run without installing any software locally
+The SV and MT parts of the pipeline can now run without installing any software locally
 
-To test the pipeline on you server, if you have nextflow installed, use :
+To test the pipeline on you server, you need nextflow and singularity, then use :
 
 ```
 git clone https://github.com/scorreard/Variant_catalogue_pipeline.git
