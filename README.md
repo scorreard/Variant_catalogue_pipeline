@@ -1,3 +1,5 @@
+#Important disclaimer about this repo
+
 This repo is a clone from https://github.com/wassermanlab/Variant_catalogue_pipeline and a Work In Progress.
 
 https://github.com/wassermanlab/Variant_catalogue_pipeline must be considered as the main repo and be the one cited or mentionned if you use this code.
@@ -8,12 +10,10 @@ The SV qnd MT pqrts of the pipeline can now run without installing any software 
 
 To test the pipeline on you server, if you have nextflow installed, use :
 
-'''
+```
 git clone https://github.com/scorreard/Variant_catalogue_pipeline.git
-nextflow run scorreard/Variant_catalogue_pipeline -r main -profile GRCh38
-'''
-
-
+nextflow run scorreard/Variant_catalogue_pipeline -r main -profile GRCh38,singularity
+```
 
 
 
