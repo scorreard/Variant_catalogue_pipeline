@@ -10,7 +10,6 @@
 process MT_haplocheck {
 	tag "${MT_FilterOut_sites_vcf.simpleName}"
 
-    conda "bioconda::haplocheck=1.3.3"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/haplocheck:1.3.3--h4a94de4_0':
         'quay.io/biocontainers/haplocheck:1.3.3--h4a94de4_0' }"
