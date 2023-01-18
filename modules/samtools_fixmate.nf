@@ -7,8 +7,10 @@
 
 
 process samtools_fixmate {
-	label 'conda_annotate'
+	label 'process_medium'
 	tag "${bam.SimpleName}"
+	
+	container = 'https://depot.galaxyproject.org/singularity/samtools:1.16.1--h6899075_1'
 
 	input :
 	file bam
