@@ -11,7 +11,7 @@ import sys
 import hail as hl
 from hail.plot import output_notebook, show
 #hl.init(tmp_dir=temp_directory)
-output_notebook()
+#output_notebook()
 
 
 # In[ ]:
