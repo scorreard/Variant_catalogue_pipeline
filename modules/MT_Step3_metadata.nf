@@ -8,6 +8,7 @@
 
 
 process MT_Step3_metadata {
+	label 'process_medium'
         
 	input :
         file MT_Step3_metadata_sample
