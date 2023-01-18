@@ -8,8 +8,10 @@
 // bcftools norm remove the variants that are duplicated within the merge files (variants that were called against both references)
 
 process MT_norm {
-	label 'conda_annotate'
         tag "${MT_MergeVcfs.simpleName}"
+	label 'process_medium'
+
+	container = 'https://depot.galaxyproject.org/singularity/bcftools:1.16--hfe4b78e_1'
 
         input :
 	file MT_MergeVcfs
