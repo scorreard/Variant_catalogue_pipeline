@@ -9,7 +9,12 @@
 
 
 process SV_jasmine {
+	label 'process_medium'
+
+        container = "docker://brentp/rare-disease-sv:v0.1.2"
+
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/SV/jasmine", mode: 'copy'
+
 
 	input:
         val(sample_vcfs)
