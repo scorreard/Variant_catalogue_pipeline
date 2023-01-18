@@ -8,6 +8,7 @@
 
 
 process list_vcfs_txt {
+	label 'process_low'
 
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/${var_type}", mode: 'copy'
         
