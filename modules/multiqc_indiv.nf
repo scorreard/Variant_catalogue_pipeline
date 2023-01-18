@@ -8,6 +8,9 @@
 
 
 process multiqc_indiv {
+	label 'process_low'
+
+        container = "https://depot.galaxyproject.org/singularity/multiqc:1.13--pyhdfd78af_0"
 
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Aggregated/multiqc/", mode: 'copy'
 
