@@ -7,8 +7,10 @@
 // STEP TO DESCRIBE
 
 process SV_paragraph_duphold {
-	label 'conda_annotate'
         tag "${bam.simpleName}"
+	label 'process_medium'
+
+        container = "docker://brentp/rare-disease-sv:v0.1.2"
 
 //	Issue with the script from paragraph   [E::idx_find_and_load] Could not retrieve index file for 'paragraph_output/variants.vcf.gz'
 // 	According to github, workaround is to modify multigrmpy.py : https://github.com/Illumina/paragraph/issues/59
