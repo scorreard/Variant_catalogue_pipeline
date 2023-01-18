@@ -8,8 +8,10 @@
 
 
 process align_to_MT {
-	label 'conda_annotate'
         tag "$fastqfromsam.simpleName"
+	label 'process_low'
+
+	container = 'https://depot.galaxyproject.org/singularity/mulled-v2-fe8faa35dbf6dc65a0f7f5d4ea12e31a79f73e40:219b6c272b25e7e642ae3ff0bf0c5c81a5135ab4-0'
 
         input :
         path ref_genome_MT_file
