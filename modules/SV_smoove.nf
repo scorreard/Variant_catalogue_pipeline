@@ -9,6 +9,9 @@
 
 process SV_smoove {
 	tag "${bam.simpleName}"
+	label 'process_medium'
+
+	container = "https://depot.galaxyproject.org/singularity/smoove:0.2.8--h9ee0642_1" 
 
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/SV/Sample/smoove", mode: 'copyNoFollow'
 	
