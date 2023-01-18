@@ -9,7 +9,10 @@
 
 process MT_call_variants {
         tag "${MarkDuplicates_bam_MT.baseName}"
+	label 'process_low'
 
+	container = "https://depot.galaxyproject.org/singularity/gatk4%3A4.3.0.0--py36hdfd78af_0"
+	
 	input :
 	path ref_genome_MT_file
         path ref_genome_MT_file_index	
