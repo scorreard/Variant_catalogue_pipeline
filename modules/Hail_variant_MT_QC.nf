@@ -9,7 +9,7 @@
 // Future update : Include gnomAD frequency to each varaint, annotate the varaints using vep
 
 process Hail_variant_MT_QC {
-
+	label 'process_medium'
 
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Aggregated/Hail/Variants/MT/", mode: 'copy', pattern : 'sample_annotations.txt'
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Aggregated/Hail/Variants/MT/", mode: 'copy', pattern : 'MT_stats.txt'
