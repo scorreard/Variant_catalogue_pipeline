@@ -10,8 +10,10 @@
 
 
 process MarkDuplicates_index {
-	label 'conda_annotate'
         tag "${bam_MT.baseName}"
+	label 'process_low'
+
+	container = 'https://depot.galaxyproject.org/singularity/samtools:1.16.1--h6899075_1'
 
         input :
         file bam_MT
