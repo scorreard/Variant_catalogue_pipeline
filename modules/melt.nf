@@ -7,8 +7,10 @@
 // Rename varaints, compress the vcf and index the compressed vcf
 
 process melt {
-	label 'conda_annotate'
 	tag "${bam.simpleName}"
+	label 'process_low'
+	
+	container = 'https://depot.galaxyproject.org/singularity/melt%3A1.0.3--pyh864c0ab_4'
 
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/MEI/Sample/", mode: 'copyNoFollow'
 		
