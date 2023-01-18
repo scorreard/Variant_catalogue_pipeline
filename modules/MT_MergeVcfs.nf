@@ -11,6 +11,8 @@ process MT_MergeVcfs {
         tag "${MT_call_variants.simpleName}"
 	label 'process_low'
 
+	container = "https://depot.galaxyproject.org/singularity/gatk4%3A4.3.0.0--py36hdfd78af_0"
+
         input :
         file MT_Liftover
 	file MT_call_variants
