@@ -9,6 +9,9 @@
 
 process deepvariant_call {
         tag "${bam.simpleName}"
+	label 'process_high'
+	
+	container = "google/deepvariant:1.4.0"
 
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/SNV/Sample/", mode: 'copyNoFollow'
 
