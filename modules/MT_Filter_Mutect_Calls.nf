@@ -9,7 +9,10 @@
 
 process MT_Filter_Mutect_Calls {
         tag "${MT_MergeVcfs.simpleName}"
+	label 'process_low'
 
+	container = "https://depot.galaxyproject.org/singularity/gatk4%3A4.3.0.0--py36hdfd78af_0"
+	
 	input :
 	file ref_genome_MT
 	file ref_genome_MT_index
