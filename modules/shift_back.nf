@@ -1,5 +1,8 @@
 process shift_back {
 	tag "${MT_shifted_CollectMetrics}"
+	label 'process_low'
+	
+        container = 'https://depot.galaxyproject.org/singularity/r-stringr%3A1.1.0--r3.3.1_0'
 
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/MT/QC/", mode: 'copyNoFollow', pattern: "*per_base_coverage.tsv"
 
