@@ -9,6 +9,18 @@
 import hail as hl
 import sys
 
+
+import pyspark
+from pyspark.sql import SparkSession
+
+ #Create SparkSession
+spark = SparkSession.builder
+             .master("local[1]")
+             .appName("myapp.com")
+             .getOrCreate()
+
+from pyspark import SparkContext, SparkConf
+
 #import sys
 temp_directory=sys.argv[2]
 
