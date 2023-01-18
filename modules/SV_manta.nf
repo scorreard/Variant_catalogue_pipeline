@@ -9,7 +9,10 @@
 
 process SV_manta {
 	tag "${bam.simpleName}"
-    	
+	label 'process_medium'
+
+        container = "docker://brentp/rare-disease-sv:v0.1.2"                                        
+
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/SV/Sample/manta", mode: 'copyNoFollow'
 	
 	input:
