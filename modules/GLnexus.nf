@@ -8,6 +8,9 @@
 // GLnexus also include a varaint filtering step, that according to publications, is as good as GATK VQSR, so no additional step is needed.
 
 process GLnexus_cli {
+	label 'process_high'
+
+	container = "https://depot.galaxyproject.org/singularity/glnexus:1.4.1--h40d77a6_0"
 
 	input :
 	file list_gvcf
