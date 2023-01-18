@@ -10,6 +10,9 @@
 
 process Picard_CollectWgsMetrics_MT {
         tag "${bam_MT}"
+	label 'process_medium'
+
+	container = 'https://depot.galaxyproject.org/singularity/gatk4%3A4.3.0.0--py36hdfd78af_0'
 
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/MT/QC/${bam_MT.simpleName}/", mode: 'copyNoFollow'
 
