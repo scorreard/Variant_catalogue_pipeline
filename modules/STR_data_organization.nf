@@ -7,6 +7,7 @@
 // Run a R script that organize the SNV variants information in the tables expected to be displayed in the IBVL interface
 
 process STR_data_organization {
+	label 'process_low'
 
         publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/str/", mode: 'copy', pattern: "str.tsv"
 	publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/variants/", mode: 'copy', pattern: "variants_str.tsv"
