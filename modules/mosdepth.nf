@@ -9,6 +9,9 @@
 
 process Mosdepth {
         tag "$bam"
+	label 'process_low'
+
+        container = "https://depot.galaxyproject.org/singularity/mosdepth:0.3.3--hdfd78af_1"
 
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Individuals/${bam.simpleName}/Mosdepth/", mode: 'copy'
 
