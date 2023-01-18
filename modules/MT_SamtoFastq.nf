@@ -8,7 +8,10 @@
 
 process MT_SamtoFastq {
         tag "${Extract_MT_Read.baseName}"
+	label 'process_low'
 
+	container = "https://depot.galaxyproject.org/singularity/gatk4%3A4.3.0.0--py36hdfd78af_0"
+	
         input :
         file Extract_MT_Read
         val assembly
