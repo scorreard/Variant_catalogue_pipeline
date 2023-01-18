@@ -8,6 +8,7 @@
 
 
 process MT_Step1_input_tsv {
+	label 'process_medium'
         
 	input :
         file Sample_MT_Step1_input_tsv
