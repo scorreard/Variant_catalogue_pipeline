@@ -10,11 +10,10 @@ import hail as hl
 import sys
 
 #import sys
-#temp_directory=sys.argv[2]
+temp_directory=sys.argv[2]
 
-#import hail as hl
 #from hail.plot import output_notebook, show
-#hl.init(tmp_dir=temp_directory)
+hl.init(tmp_dir=temp_directory)
 #output_notebook()
 
 
