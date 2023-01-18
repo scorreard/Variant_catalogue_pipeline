@@ -11,6 +11,9 @@
 
 process MarkDuplicates {
 	 tag "${bam_MT.baseName}"
+	label 'process_low'
+
+	container = "https://depot.galaxyproject.org/singularity/gatk4%3A4.3.0.0--py36hdfd78af_0"
 
         input :
         file bam_MT
