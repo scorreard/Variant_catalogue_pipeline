@@ -8,6 +8,7 @@
 // This is necessary to display the heteroplasmy histogram for each mitochondrial variant
 
 process MT_data_organization {
+	label 'process_medium'
 
         publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/mt_ibvl_frequencies", mode: 'copy', pattern: "mt_ibvl_frequencies.tsv"
         publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/mts/", mode: 'copy', pattern: "mts.tsv"
