@@ -1,5 +1,5 @@
 process MT_Step3_metadata_sample {
-	label 'process_low'
+	label 'process_medium'
 	
         container = 'https://depot.galaxyproject.org/singularity/r-stringr%3A1.1.0--r3.3.1_0'
 
