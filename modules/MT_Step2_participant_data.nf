@@ -8,6 +8,7 @@
 
 
 process MT_Step2_participant_data {
+	label 'process_medium'
 
 	input :
         file Sample_MT_Step2_participant_data
