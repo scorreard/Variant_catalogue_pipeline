@@ -9,6 +9,7 @@
 
 process MT_MergeVcfs {
         tag "${MT_call_variants.simpleName}"
+	label 'process_low'
 
         input :
         file MT_Liftover
