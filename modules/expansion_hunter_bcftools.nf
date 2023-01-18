@@ -11,6 +11,9 @@
 
 process expansion_hunter_bcftools {
 	tag "${EH_vcf.simpleName}"
+	label 'process_medium'
+
+	container = 'https://depot.galaxyproject.org/singularity/bcftools:1.16--hfe4b78e_1'
 
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/STR/Sample/", mode: 'copyNoFollow'
 
