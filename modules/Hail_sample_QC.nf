@@ -9,7 +9,7 @@
 
 process Hail_sample_QC {
 
-    conda "bioconda::hail=0.2.58"
+    conda "bioconda::hail=0.2.58 conda-forge::pyspark"
     
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Aggregated/Hail/Samples/", mode: 'copy', pattern : '*.html'
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/vcf_post_hail/", mode: 'copy', pattern : '*filtered_samples.vcf.bgz'
@@ -30,6 +30,6 @@ process Hail_sample_QC {
 	mkdir -p $params.tmp_dir
 	java -version
 	python --version
-	#!/usr/bin/env python ${projectDir}/modules/Hail_sample_QC.py $SNV_vcf $params.tmp_dir
+	python ${projectDir}/modules/Hail_sample_QC.py $SNV_vcf $params.tmp_dir
 	"""
 }
