@@ -22,16 +22,16 @@ import sys
 # In[ ]:
 
 
-from hail.plot import show
-from pprint import pprint
-from bokeh.models import Span
+#from hail.plot import show
+#from pprint import pprint
+#from bokeh.models import Span
 #hl.plot.output_notebook()
-from bokeh.models import Range1d
-from bokeh.plotting import figure, output_file, show, save
-from bokeh.io import export_png
+#from bokeh.models import Range1d
+#from bokeh.plotting import figure, output_file, show, save
+#from bokeh.io import export_png
 
-import pandas as pd
-import os
+#import pandas as pd
+#import os
 
 
 # Import a vcf file and read it as a matrix table (mt, hail specific file type)
