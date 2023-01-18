@@ -29,7 +29,6 @@ process Hail_sample_QC {
 	"""
 	mkdir -p $params.tmp_dir
 	python --version
-	JAVA_CMD="$(which java)"
 	java -version
 	#python ${projectDir}/modules/Hail_sample_QC.py $SNV_vcf $params.tmp_dir
 	"""
