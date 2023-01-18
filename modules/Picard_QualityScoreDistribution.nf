@@ -5,7 +5,10 @@
 
 process Picard_QualityScoreDistribution {
         tag "${bam.simpleName}"
- 
+	label 'process_low'
+
+ 	container = 'https://depot.galaxyproject.org/singularity/picard:2.27.4--hdfd78af_0'
+
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Individuals/${bam.simpleName}/Picard_Metrics/", mode: 'copyNoFollow'
 	
 	input :
