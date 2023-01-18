@@ -9,6 +9,9 @@
 
 process bwa_index {
         tag "$genome"
+	label 'process_medium'
+	
+	container = "https://depot.galaxyproject.org/singularity/bwa:0.7.17--hed695b0_7"
 	
 	input:
         path genome
