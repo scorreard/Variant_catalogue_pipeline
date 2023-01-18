@@ -14,10 +14,7 @@ import pyspark
 from pyspark.sql import SparkSession
 
 #Create SparkSession
-spark = SparkSession.builder
-.master("local[1]")
-.appName("myapp.com")
-.getOrCreate()
+spark = SparkSession.builder.master("local[1]").appName("myapp.com").getOrCreate()
 
 from pyspark import SparkContext, SparkConf
 
