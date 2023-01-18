@@ -9,6 +9,7 @@
 
 process MT_haplocheck {
 	tag "${MT_FilterOut_sites_vcf.simpleName}"
+	label 'process_medium'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/haplocheck:1.3.3--h4a94de4_0':
