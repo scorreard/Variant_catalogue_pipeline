@@ -9,7 +9,10 @@
 
 process MT_Merge_stat_file {
         tag "${MT_call_variants_stat.simpleName}"
+	label 'process_low'
 
+	container = "https://depot.galaxyproject.org/singularity/gatk4%3A4.3.0.0--py36hdfd78af_0"
+	
         input :
         file MT_call_variants_stat
 	file MT_call_variants_shifted_stat
