@@ -9,6 +9,9 @@
 
 process SV_concat_by_sample {
 	tag "${sample_name}"
+	label 'process_medium'
+
+        container = "https://depot.galaxyproject.org/singularity/bcftools%3A1.9--ha228f0b_4"
 
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/SV/Sample/Concat_by_sample", mode: 'copyNoFollow'
 
