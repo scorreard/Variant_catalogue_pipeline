@@ -11,6 +11,9 @@
 
 process align_sort_output_bam {
 	tag "$sampleId"
+	label 'process_medium'
+
+        container = 'https://depot.galaxyproject.org/singularity/mulled-v2-fe8faa35dbf6dc65a0f7f5d4ea12e31a79f73e40:219b6c272b25e7e642ae3ff0bf0c5c81a5135ab4-0'
 
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/BAM/", mode: 'copyNoFollow'
 
