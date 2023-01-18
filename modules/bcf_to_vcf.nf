@@ -10,8 +10,10 @@
 // Index the compressed vcf
 
 process bcf_to_vcf {
-	label 'conda_annotate'
+	label 'process_high'
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/SNV/", mode: 'copy'
+
+	container = 'https://depot.galaxyproject.org/singularity/bcftools:1.16--hfe4b78e_1'
 
 	input :
 	file bcf_file
