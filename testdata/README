@@ -31,6 +31,7 @@ gzip *.fastq
 
 #Test reference fasta file and index were created this way
 bedtools getfasta -fi hg38_full_analysis_set_plus_decoy_hla.fa -bed bed.bed -fo hg38_full_analysis_set_plus_decoy_hla_chr20_X_Y_MT.fa
+#Manually check the chromosome names
 samtools faidx hg38_full_analysis_set_plus_decoy_hla_chr20_X_Y_MT.fa
 
 cat bed.bed 
