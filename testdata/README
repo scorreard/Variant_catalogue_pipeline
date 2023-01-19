@@ -6,22 +6,35 @@ wget ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239837/NA20757.final.cram*
 wget ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239849/NA20769.final.cram*
 wget ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR324/ERR3240186/HG00446.final.cram*
 
-samtools view NA12718.final.cram chrX:15000000-15010000 chrY:15000000-15010000 chrM chr20:15000000-1501000 -b | samtools fastq -1 NA12718_R1.fastq -2 NA12718_R2.fastq 
+samtools view HG00446.final.cram chrX:15000000-15010000 chrY:15000000-15010000 chrM chr20:15000000-15010000 -b -h -o HG00446_small.bam
+samtools sort -n -o HG00446_small_sorted.bam HG00446_small.bam
+bedtools bamtofastq -i HG00446_small_sorted.bam -fq HG00446_R1.fastq -fq2 HG00446_R2.fastq
 
-samtools view HG00446.final.cram chrX:15000000-15010000 chrY:15000000-15010000 chrM chr20:15000000-1501000 -b | samtools fastq -1 HG00446_R1.fastq -2 HG00446_R2.fastq 
+samtools view NA12718.final.cram chrX:15000000-15005000 chrY:15000000-15005000 chrM:1-7000 chr20:15000000-15010000 -b -h -o NA12718_small.bam
+samtools sort -n -o NA12718_small_sorted.bam NA12718_small.bam
+bedtools bamtofastq -i NA12718_small_sorted.bam -fq NA12718_R1.fastq -fq2 NA12718_R2.fastq
 
-samtools view NA18549.final.cram chrX:15000000-15010000 chrY:15000000-15010000 chrM chr20:15000000-1501000 -b | /samtools fastq -1 NA18549_R1.fastq -2 NA18549_R2.fastq
+samtools view NA18549.final.cram chrX:15000000-15005000 chrY:15000000-15005000 chrM:1-7000 chr20:15000000-15010000 -b -h -o NA18549_small.bam
+samtools sort -n -o NA18549_small_sorted.bam NA18549_small.bam
+bedtools bamtofastq -i NA18549_small_sorted.bam -fq NA18549_R1.fastq -fq2 NA18549_R2.fastq
 
-samtools view NA20757.final.cram cchrX:15000000-15010000 chrY:15000000-15010000 chrM chr20:15000000-1501000 -b | samtools fastq -1 NA20757_R1.fastq -2 NA20757_R2.fastq
+samtools view NA20757.final.cram chrX:15000000-15005000 chrY:15000000-15005000 chrM:1-7000 chr20:15000000-15010000 -b -h -o NA20757_small.bam
+samtools sort -n -o NA20757_small_sorted.bam NA20757_small.bam
+bedtools bamtofastq -i NA20757_small_sorted.bam -fq NA20757_R1.fastq -fq2 NA20757_R2.fastq
 
-samtools view NA20769.final.cram chrX:15000000-15010000 chrY:15000000-15010000 chrM chr20:15000000-1501000 -b | samtools fastq -1 NA20769_R1.fastq -2 NA20769_R2.fastq
+samtools view NA20769.final.cram chrX:15000000-15005000 chrY:15000000-15005000 chrM:1-7000 chr20:15000000-15010000 -b -h -o NA20769_small.bam
+samtools sort -n -o NA20769_small_sorted.bam NA20769_small.bam
+bedtools bamtofastq -i NA20769_small_sorted.bam -fq NA20769_R1.fastq -fq2 NA20769_R2.fastq
 
+rm *.bam
 gzip *.fastq
 
 #Test reference fasta file and index were created this way
-
-
 bedtools getfasta -fi hg38_full_analysis_set_plus_decoy_hla.fa -bed bed.bed -fo hg38_full_analysis_set_plus_decoy_hla_chr20_X_Y_MT.fa
-
 samtools faidx hg38_full_analysis_set_plus_decoy_hla_chr20_X_Y_MT.fa
 
+cat bed.bed 
+chrX	15000000	15005000
+chrY	15000000	15005000
+chrM	1	7000
+chr20	15000000	15010000
