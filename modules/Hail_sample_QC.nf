@@ -22,7 +22,7 @@ process Hail_sample_QC {
 	val run 
 
 	output :
-	path '*.html', emit : graph
+	path '*.html', emit : graph, optional : true
 	path '*filtered_samples.vcf.bgz', emit : vcf_sample_filtered
 	path '*filtered_samples_sex.tsv', emit : filtered_sample_sex
 
