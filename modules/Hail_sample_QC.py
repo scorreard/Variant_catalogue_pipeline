@@ -62,7 +62,7 @@ def stat(table):
     min_graph = table[table.columns[1]]. min() - 3*StdDev
     if(np.isnan(min_graph)):  min_graph = 0
     max_graph = table[table.columns[1]]. max() + 3*StdDev
-    if (max_graph == "NaN") :  max_graph = 0
+    if(np.isnan(max_graph)):  max_graph = 0
     return Mean, StdDev, Low_threashold, High_threashold, min_graph, max_graph
 
 
