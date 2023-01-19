@@ -1,0 +1,19 @@
+#Test fastq files were created this way
+
+wget ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239480/NA12718.final.cram*
+wget ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239499/NA18549.final.cram*
+wget ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239837/NA20757.final.cram*
+wget ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ERR3239849/NA20769.final.cram*
+wget ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR324/ERR3240186/HG00446.final.cram*
+
+samtools view NA12718.final.cram chrX:1-10000 chrY:1-10000 chrM chr20:1-10000 -b | samtools fastq -1 NA12718_R1.fastq -2 NA12718_R2.fastq 
+
+samtools view HG00446.final.cram chrX:1-10000 chrY:1-10000 chrM chr20:1-10000 -b | samtools fastq -1 HG00446_R1.fastq -2 HG00446_R2.fastq 
+
+samtools view NA18549.final.cram chrX:1-10000 chrY:1-10000 chrM chr20:1-10000 -b | /samtools fastq -1 NA18549_R1.fastq -2 NA18549_R2.fastq
+
+samtools view NA20757.final.cram chrX:1-10000 chrY:1-10000 chrM chr20:1-10000 -b | samtools fastq -1 NA20757_R1.fastq -2 NA20757_R2.fastq
+
+samtools view NA20769.final.cram chrX:1-10000 chrY:1-10000 chrM chr20:1-10000 -b | samtools fastq -1 NA20769_R1.fastq -2 NA20769_R2.fastq
+
+gzip *.fastq
