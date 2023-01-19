@@ -9,27 +9,27 @@
 
 import hail as hl
 import sys
+from hail.plot import show
+from pprint import pprint
+from bokeh.models import Span
+from bokeh.models import Range1d
+from bokeh.plotting import figure, output_file, show, save
+from bokeh.io import export_png
+
+import pandas as pd
+import os
+
 
 temp_directory=sys.argv[2]
 
-#from hail.plot import output_notebook, show
 hl.init(tmp_dir=temp_directory)
+
+#from hail.plot import output_notebook, show
 #output_notebook()
-
-
-# In[ ]:
-
-
-#from hail.plot import show
-#from pprint import pprint
-#from bokeh.models import Span
 #hl.plot.output_notebook()
-#from bokeh.models import Range1d
-#from bokeh.plotting import figure, output_file, show, save
-#from bokeh.io import export_png
 
-#import pandas as pd
-#import os
+
+
 
 
 # Import a vcf file and read it as a matrix table (mt, hail specific file type)
