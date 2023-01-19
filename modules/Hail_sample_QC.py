@@ -10,12 +10,10 @@
 import hail as hl
 import sys
 
-
-#import sys
-#temp_directory=sys.argv[2]
+temp_directory=sys.argv[2]
 
 #from hail.plot import output_notebook, show
-#hl.init(tmp_dir=temp_directory)
+hl.init(tmp_dir=temp_directory)
 #output_notebook()
 
 
@@ -39,7 +37,7 @@ import sys
 
 # In[ ]:
 
-hl.import_vcf(sys.argv[1], array_elements_required=False, force_bgz=True).write('SNV_vcf.mt', overwrite=True)
+hl.import_vcf(sys.argv[1], array_elements_required=False, force_bgz=True, reference_genome=sys.argv[3]).write('SNV_vcf.mt', overwrite=True)
 
 
 # In[ ]:
