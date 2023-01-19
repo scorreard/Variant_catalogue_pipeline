@@ -71,7 +71,7 @@ workflow SV {
 	take : 
 		bam
 		bai
-//		sample_sex_file
+		sample_sex_file
 
 	main :
 		//Structural Varaints (SV)
