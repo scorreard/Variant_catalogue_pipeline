@@ -8,8 +8,9 @@
 // Includes a final filtering step 
 
 process Hail_sample_QC {
+	label 'process_medium'
 
-    conda "bioconda::hail=0.2.58"
+	conda "bioconda::hail=0.2.58"
     
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Aggregated/Hail/Samples/", mode: 'copy', pattern : '*.html'
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/vcf_post_hail/", mode: 'copy', pattern : '*filtered_samples.vcf.bgz'
@@ -28,10 +29,6 @@ process Hail_sample_QC {
 	script:
 	"""
 	mkdir -p $params.tmp_dir
-	java -version
-	which java
-	python --version
-	#ll /usr/local
 	python ${projectDir}/modules/Hail_sample_QC.py $SNV_vcf $params.tmp_dir $assembly
 	"""
 }
