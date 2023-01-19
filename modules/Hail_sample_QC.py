@@ -3,7 +3,6 @@
 
 # Hail and plot initialisation
 
-# In[91]:
 
 #from jinja2.utils import markupsafe
 
@@ -24,11 +23,9 @@ temp_directory=sys.argv[2]
 
 hl.init(tmp_dir=temp_directory)
 
-#from hail.plot import output_notebook, show
+#from hail.plot import output_notebook
 #output_notebook()
 #hl.plot.output_notebook()
-
-
 
 
 
@@ -62,7 +59,9 @@ def stat(table):
     Low_threashold = Mean - 3*StdDev
     High_threashold = Mean + 3*StdDev
     min_graph = table[table.columns[1]]. min() - 3*StdDev
+    min_graph = min_graph.fillna(0)
     max_graph = table[table.columns[1]]. max() + 3*StdDev
+    max_graph = max_graph.fillna(0)
     return Mean, StdDev, Low_threashold, High_threashold, min_graph, max_graph
 
 
