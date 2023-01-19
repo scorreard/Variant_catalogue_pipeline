@@ -57,7 +57,7 @@ def stat(table):
     Mean = table[table.columns[1]]. mean()  
     StdDev = table[table.columns[1]]. std()
     Low_threashold = Mean - 3*StdDev
-    if (isNaN(Low_threashold)) min_graph = 0
+    if (isNaN(Low_threashold)) { min_graph = 0 }
     High_threashold = Mean + 3*StdDev
     if (isNaN(High_threashold)) min_graph = 0
     min_graph = table[table.columns[1]]. min() - 3*StdDev
