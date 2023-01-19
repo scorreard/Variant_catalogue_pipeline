@@ -32,6 +32,6 @@ process Hail_sample_QC {
 	which java
 	python --version
 	#ll /usr/local
-	python ${projectDir}/modules/Hail_sample_QC.py $SNV_vcf $params.tmp_dir
+	python ${projectDir}/modules/Hail_sample_QC.py $SNV_vcf $params.tmp_dir $assembly
 	"""
 }
