@@ -9,12 +9,12 @@ temp_directory=sys.argv[3]
 import hail as hl
 from hail.plot import output_notebook, show
 hl.init()
-output_notebook()
+#output_notebook()
 
 from hail.plot import show
 from pprint import pprint
 from bokeh.models import Span
-hl.plot.output_notebook()
+#hl.plot.output_notebook()
 from bokeh.models import Range1d
 from bokeh.plotting import figure, output_file, show, save
 
