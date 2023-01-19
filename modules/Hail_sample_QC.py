@@ -206,112 +206,59 @@ n_transversion_table.rename(columns = {n_transversion_table.columns[1]:'n_transv
 
 # Create the graphs
 
-# In[108]:
+#Skip if there is only one sample (for the test)
+if (DP_table.shape[0] >2) :
 
+    plot_histo(DP_table, mt.sample_qc.dp_stats.mean, 'Mean Depth per sample')
 
-plot_histo(DP_table, mt.sample_qc.dp_stats.mean, 'Mean Depth per sample')
-
-
-# In[109]:
-
-
-plot_histo(GQ_table,
+    plot_histo(GQ_table,
            mt.sample_qc.gq_stats.mean,
            'Mean Genotype quality per sample')
 
-
-# In[110]:
-
-
-plot_histo(call_rate_table,
+    plot_histo(call_rate_table,
            mt.sample_qc.call_rate,
            'Call Rate per sample')
 
-
-# In[111]:
-
-
-plot_histo(r_het_hom_var_table,
+    plot_histo(r_het_hom_var_table,
            mt.sample_qc.r_het_hom_var,
            'Ratio heterozygous to homozygous variants per sample')
 
-
-# In[112]:
-
-
-plot_sp (n_het_table,
+    plot_sp (n_het_table,
          mt.sample_qc.n_het,
          n_hom_var_table,
          mt.sample_qc.n_hom_var,
          'Number of Heterozygous Variants',
          'Number of homozygous variants')
 
-
-# In[113]:
-
-
-plot_histo(n_snp_table,
+    plot_histo(n_snp_table,
            mt.sample_qc.n_snp,
            'Number of SNPs per sample')
 
-
-# In[115]:
-
-
-plot_histo(n_singleton_table,
+    plot_histo(n_singleton_table,
            mt.sample_qc.n_singleton,
            'Number of singletons per sample')
 
-
-# In[116]:
-
-
-plot_sp (n_insertion_table,
+    plot_sp (n_insertion_table,
          mt.sample_qc.n_insertion,
          n_deletion_table,
          mt.sample_qc.n_deletion,
          'Number of insertions',
          'Number of deletions')
 
-
-# In[117]:
-
-
-plot_histo(r_insertion_deletion_table,
+    plot_histo(r_insertion_deletion_table,
            mt.sample_qc.r_insertion_deletion,
            'Ratio insertions to deletions per sample')
 
-
-# In[118]:
-
-
-plot_sp (n_transition_table,
+    plot_sp (n_transition_table,
          mt.sample_qc.n_transition,
          n_transversion_table,
          mt.sample_qc.n_transversion,
          'Number of transitions',
          'Number of transversions')
 
-
-# In[119]:
-
-
-plot_histo(r_ti_tv_table,
+    plot_histo(r_ti_tv_table,
            mt.sample_qc.r_ti_tv,
            'Ratio transitions to transversions per sample')
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
 
 # **Filter the samples based on the threasholds repersented on the figures**
 # 
