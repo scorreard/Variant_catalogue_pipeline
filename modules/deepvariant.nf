@@ -30,6 +30,8 @@ process deepvariant_call {
 	path '*_sorted.vcf.gz.tbi', emit : deepvariant_vcf_index
 
 	script:
+	def args = task.ext.args ?: ''
+	def regions = intervals ? "--regions ${intervals}" : ""
 	"""
 	if [ -a $params.outdir_ind/${assembly}/*/${run}/SNV/Sample/${bam.simpleName}.g.vcf.gz ]; then
 		deepvariant_gvcf=\$(find $params.outdir_ind/${assembly}/*/${run}/SNV/Sample/ -name ${bam.simpleName}.g.vcf.gz) 
@@ -44,6 +46,8 @@ process deepvariant_call {
 		--intermediate_results_dir . \
 		--model_type=WGS \
 		--ref=${reference} \
+		${args} \
+		${regions} \
 		--reads=${bam.simpleName}.bam \
 		--output_gvcf=${bam.simpleName}.g.vcf.gz \
 		--output_vcf=${bam.simpleName}.vcf.gz
