@@ -9,6 +9,9 @@
 // Future update : Include gnomAD frequency to each varaint, annotate the varaints using vep
 
 process Hail_STR {
+	label 'process_medium'
+
+	conda "bioconda::hail=0.2.58"
 
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Aggregated/Hail/Variants/STR/", mode: 'copy', pattern : '*.html'
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Aggregated/Hail/Variants/STR/", mode: 'copy', pattern : 'STR_QC_report.txt'
