@@ -40,7 +40,7 @@ from hail.genetics import ReferenceGenome
 
 #hl.init(tmp_dir=temp_directory)
 
-output_notebook()
+#output_notebook()
 
 
 # In[3]:
@@ -65,7 +65,7 @@ import os
 
 from pprint import pprint
 from bokeh.models import Span
-hl.plot.output_notebook()
+#hl.plot.output_notebook()
 from bokeh.models import Range1d
 from bokeh.plotting import figure, output_file, show, save
 
