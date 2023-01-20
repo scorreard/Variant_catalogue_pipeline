@@ -10,7 +10,7 @@ process SNV_data_organization {
         tag "${SNV_annot_merged}"
 	label 'process_medium'
 	
-        container = 'https://depot.galaxyproject.org/singularity/r-stringr%3A1.1.0--r3.3.1_0'
+        container = 'https://depot.galaxyproject.org/singularity/r-vcfr%3A1.8.0--r36h0357c0b_3'
 
 	publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/genomic_ibvl_frequencies/", mode: 'copy', pattern: "genomic_ibvl_frequencies_*"
         publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/genomic_gnomad_frequencies/", mode: 'copy', pattern: "genomic_gnomad_frequencies_*"
