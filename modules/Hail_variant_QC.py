@@ -181,9 +181,9 @@ plot_sp (het_freq_hwe_SNV_table,
 #Not implemented :  Hardy–Weinberg values
 
 if (sys.argv[4] == 'GRCh37') :
-    intervals = [hl.parse_locus_interval(x) for x in ['X', 'Y', '1-22']]
+    intervals = [hl.parse_locus_interval(x, reference_genome='GRCh37') for x in ['X', 'Y', '1-22']]
 else :
-    intervals = [hl.parse_locus_interval(x) for x in ['chrX', 'chrY', 'chr1-chr22']]    
+    intervals = [hl.parse_locus_interval(x, reference_genome='GRCh38') for x in ['chrX', 'chrY', 'chr1-chr22']]    
 
 SNV_mt_var_filtered = hl.filter_intervals(mt, intervals, keep=True)
 
