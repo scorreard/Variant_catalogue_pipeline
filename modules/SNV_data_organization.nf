@@ -9,7 +9,8 @@
 process SNV_data_organization {
         tag "${SNV_annot_merged}"
 	label 'process_medium'
-
+	
+        container = 'https://depot.galaxyproject.org/singularity/r-stringr%3A1.1.0--r3.3.1_0'
 
 	publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/genomic_ibvl_frequencies/", mode: 'copy', pattern: "genomic_ibvl_frequencies_*"
         publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/genomic_gnomad_frequencies/", mode: 'copy', pattern: "genomic_gnomad_frequencies_*"
@@ -34,22 +35,10 @@ process SNV_data_organization {
 
 	script:
 	"""
-	source /cm/shared/BCCHR-apps/env_vars/unset_BCM.sh
-	source /cvmfs/soft.computecanada.ca/config/profile/bash.sh
-	module load StdEnv/2020
-	module load r/4.1.2
-
-	Silent_Genomes_R=/mnt/common/SILENT/Act3/R/
-	mkdir -p \${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
-	export R_LIBS=\${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
-
 	chr=\$(echo ${SNV_annot_merged.simpleName} | sed 's/^.*_\\([^_]*\\)\$/\\1/' )
 
 	Rscript ${projectDir}/modules/SNV_data_organization.R $assembly gnomad_frequency_table_\${chr}.tsv ${SNV_annot_merged} $severity_table
 	"""
 }
-
-//	vcf_name=\$(echo ${SNV_vcf.simpleName} | sed 's/_[^_]*\$//' )
-//	chr=\$(echo ${SNV_vcf.simpleName} | sed 's/^.*_\\([^_]*\\)\$/\\1/' )
 
 
