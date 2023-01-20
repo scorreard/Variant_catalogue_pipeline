@@ -6,7 +6,7 @@
 library(vcfR)
 library(dplyr)
 library(stringr)
-library(tidyr)
+#library(tidyr)
 ###################
 # Create the table as expected in the SQL
 ###################
