@@ -52,7 +52,7 @@ from gnomad.utils.slack import slack_notifications
 #from gnomad.utils.vep import vep_struct_to_csq
 #from gnomad_qc.v3.resources.meta import meta  # pylint: disable=import-error
 #from gnomad.resources.grch38.gnomad import POPS
-from gnomad.resources.grch38.reference_data import dbsnp, _import_dbsnp
+#from gnomad.resources.grch38.reference_data import dbsnp, _import_dbsnp
 
 
 # In[4]:
