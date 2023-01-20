@@ -9,6 +9,9 @@
 
 process MT_data_organization {
 	label 'process_medium'
+	
+        container = 'https://depot.galaxyproject.org/singularity/r-vcfr%3A1.8.0--r36h0357c0b_3'
+
 
         publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/mt_ibvl_frequencies", mode: 'copy', pattern: "mt_ibvl_frequencies.tsv"
         publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/mts/", mode: 'copy', pattern: "mts.tsv"
@@ -32,15 +35,6 @@ process MT_data_organization {
 
 	script:
 	"""
-	source /cm/shared/BCCHR-apps/env_vars/unset_BCM.sh
-	source /cvmfs/soft.computecanada.ca/config/profile/bash.sh
-	module load StdEnv/2020
-	module load r/4.1.2
-
-	Silent_Genomes_R=/mnt/common/SILENT/Act3/R/
-	mkdir -p \${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
-	export R_LIBS=\${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
-
 	Rscript ${projectDir}/modules/MT_data_organization.R $assembly $gnomad_MT_frequ $MT_annot $run $severity_table
 	"""
 }
