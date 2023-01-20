@@ -180,11 +180,11 @@ plot_sp (het_freq_hwe_SNV_table,
 #- Number of samples with missing genotype per variant lower than the low threshoold
 #Not implemented :  Hardy–Weinberg values
 
-if (sys.argv[4] == 'GRCh37') {
+if (sys.argv[4] == 'GRCh37') :
     intervals = [hl.parse_locus_interval(x) for x in ['X', 'Y', '1-22']]
-} else {
+else :
     intervals = [hl.parse_locus_interval(x) for x in ['chrX', 'chrY', 'chr1-chr22']]    
-}
+
 SNV_mt_var_filtered = hl.filter_intervals(mt, intervals, keep=True)
 
 SNV_mt_var_filtered = SNV_mt_var_filtered.filter_rows(
