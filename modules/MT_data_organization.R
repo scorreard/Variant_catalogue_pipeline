@@ -6,7 +6,7 @@
 library(vcfR)
 library(dplyr)
 library(stringr)
-library(tidyr)
+#library(tidyr)
 options(scipen = 999)
 ###################
 # Create the table as expected in the SQL
