@@ -107,13 +107,13 @@ workflow SV {
 		// Mobile Element Insertions (MEIs)
                 // Sample specific (Do not need to be run for a previously processed sample)
 		samtools_fixmate(bam, bai, assembly, batch, run)
-		melt(samtools_fixmate.out.samples_fixmate_bam, samtools_fixmate.out.samples_fixmate_bam_index, reference, reference_index, transposon_file, genes_file, assembly, batch, run)
+//		melt(samtools_fixmate.out.samples_fixmate_bam, samtools_fixmate.out.samples_fixmate_bam_index, reference, reference_index, transposon_file, genes_file, assembly, batch, run)
                 
 		// Aggregated steps (Need to be run everytime a new sample is added to the cohort)
 //		MEI_vcfs_txt(melt.out.vcf.collect(), assembly, batch, run, MEI)
 //		MEI_merge_samples(MEI_vcfs_txt.out, assembly, batch, run, MEI)
-//                Hail_MEI_QC (MEI_merge_samples.out.vcf, sample_sex_file, assembly, batch, run)
-//                MEI_annotation(Hail_MEI_QC.out.vcf_MEI_filtered_frequ_only, Hail_MEI_QC.out.index_MEI_filtered_frequ_only, vep_cache_merged, vep_cache_merged_version, assembly, run, assembly, CADD_1_6_whole_genome_SNVs, CADD_1_6_whole_genome_SNVs_index, CADD_1_6_InDels, CADD_1_6_InDels_index, spliceai_snv, spliceai_snv_index, spliceai_indel, spliceai_indel_index, chr, MEI, reference, dir_plugin)
+//              Hail_MEI_QC (MEI_merge_samples.out.vcf, sample_sex_file, assembly, batch, run)
+//              MEI_annotation(Hail_MEI_QC.out.vcf_MEI_filtered_frequ_only, Hail_MEI_QC.out.index_MEI_filtered_frequ_only, vep_cache_merged, vep_cache_merged_version, assembly, run, assembly, CADD_1_6_whole_genome_SNVs, CADD_1_6_whole_genome_SNVs_index, CADD_1_6_InDels, CADD_1_6_InDels_index, spliceai_snv, spliceai_snv_index, spliceai_indel, spliceai_indel_index, chr, MEI, reference, dir_plugin)
 
-//                 MEI_data_organization(MEI_annotation.out.annotation_vcf, assembly, run, MEI)
+//              MEI_data_organization(MEI_annotation.out.annotation_vcf, assembly, run, MEI)
 }
