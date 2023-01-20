@@ -804,7 +804,7 @@ def add_genotype(mt_path: str, min_hom_threshold: float = 0.95) -> hl.MatrixTabl
             .when((mt.HL < min_hom_threshold) & (mt.HL > 0.0), hl.parse_call("0/1"))
             .when(mt.HL >= min_hom_threshold, hl.parse_call("1/1"))
             .when(mt.HL == 0, hl.parse_call("0/0"))
-            .default(hl.missing(hl.tcall))
+            .default(hl.null(hl.tcall))
         ),
     )
 
