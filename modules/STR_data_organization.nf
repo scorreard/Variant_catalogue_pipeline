@@ -9,6 +9,8 @@
 process STR_data_organization {
 	label 'process_low'
 
+        container = 'https://depot.galaxyproject.org/singularity/r-vcfr%3A1.8.0--r36h0357c0b_3'
+
         publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/str/", mode: 'copy', pattern: "str.tsv"
 	publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/variants/", mode: 'copy', pattern: "variants_str.tsv"
         publishDir "$params.outdir_pop/${assembly}/${run}/Oracle_table/genes/", mode: 'copy', pattern: "genes_str.tsv"
@@ -27,15 +29,6 @@ process STR_data_organization {
 
 	script:
 	"""
-	source /cm/shared/BCCHR-apps/env_vars/unset_BCM.sh
-	source /cvmfs/soft.computecanada.ca/config/profile/bash.sh
-	module load StdEnv/2020
-	module load r/4.1.2
-
-	Silent_Genomes_R=/mnt/common/SILENT/Act3/R/
-	mkdir -p \${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
-	export R_LIBS=\${Silent_Genomes_R}/.local/R/\$EBVERSIONR/
-
 	Rscript ${projectDir}/modules/STR_data_organization.R $assembly ${STR_vcf} ${STR_catalogue}  $run ${var_type}
 	"""
 }
