@@ -44,34 +44,14 @@ process annotation_table_merged {
 	path '*.vcf', emit :  annotation_vcf
 
         script :
+	def args = task.ext.args ?: ''
         """
 	vep \
         -i ${vcf} \
         -o ${vcf.simpleName}_${var_type}_annotation_table_merged_${chr}.vcf \
 	--vcf \
 	--chr ${chr}  \
-	--offline \
-	--merged \
-        --assembly $assembly_VEP \
-        --cache \
-        --dir_cache ${vep_cache_merged} \
-	--cache_version ${vep_cache_merged_version} \
-	--use_transcript_ref \
-	--fasta $reference \
-        --distance 0 \
-	--symbol \
-	--biotype \
-	--transcript_version \
-	--variant_class \
-	--polyphen b \
-	--sift b \
-	--hgvs \
-        --check_existing \
-        --var_synonyms \
-	--tsl \
-        --dir_plugins ${dir_plugin} \
-	--plugin CADD,$CADD_1_6_whole_genome_SNVs,$CADD_1_6_InDels \
-        --plugin SpliceAI,snv=${spliceai_snv},indel=${spliceai_indel} \
+	$args \
 	--stats_file ${vcf.simpleName}_${chr}_VEP_merged_stats
 	"""
 }
