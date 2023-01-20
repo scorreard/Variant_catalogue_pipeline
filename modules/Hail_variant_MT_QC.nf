@@ -11,7 +11,7 @@
 process Hail_variant_MT_QC {
 	label 'process_medium'
 
-	conda "bioconda::hail=0.2.58"
+	conda "bioconda::hail=0.2.61"
 	
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Aggregated/Hail/Variants/MT/", mode: 'copy', pattern : 'sample_annotations.txt'
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Aggregated/Hail/Variants/MT/", mode: 'copy', pattern : 'MT_stats.txt'
