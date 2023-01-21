@@ -82,7 +82,7 @@ workflow SV {
 		sv_groups = mr.concat(sm) | groupTuple(by: 2)
 		svs = SV_concat_by_sample(sv_groups, assembly, batch, run) | collect
 		sv_merged = SV_jasmine(svs, reference, reference_index, assembly, batch, run)
-//		genotyped = SV_paragraph_duphold(sv_merged, bam, bai, reference, reference_index, assembly, batch, run)
+		genotyped = SV_paragraph_duphold(sv_merged, bam, bai, reference, reference_index, assembly, batch, run)
 
                 // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
 //		SV_vcfs_txt(SV_paragraph_duphold.out.vcf.collect(), assembly, batch, run, SV)
