@@ -113,7 +113,7 @@ def plot_sp (table_x_axis, mt_x_axis, table_y_axis, mt_y_axis, x_variable, y_var
 
 # In[8]:
 
-if (mt.aggregate_rows.shape[0] >2) :
+if (mt.count_rows() >2) :
     qual_hist = mt.aggregate_entries(hl.expr.aggregators.hist(mt.qual,
             mt.aggregate_rows(hl.agg.min(mt.qual)),
             mt.aggregate_rows(hl.agg.max(mt.qual)), 100))
