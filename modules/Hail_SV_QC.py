@@ -655,7 +655,7 @@ if (het_freq_hwe_SV_table.shape[0] >2) :
 # In[46]:
 
 
-intervals = [hl.parse_locus_interval(x) for x in ['X', 'Y', '1-22']]
+intervals = [hl.parse_locus_interval(x, reference_genome=sys.argv[4]) for x in ['X', 'Y', '1-22']]
 SV_mt_filtered = hl.filter_intervals(mt, intervals, keep=True)
 
 
@@ -837,20 +837,20 @@ max_len_filtered_inv = INV_filtered_mt.aggregate_rows(hl.agg.max(INV_filtered_mt
 
 # In[63]:
 
-
-len_hist_filtered = SV_mt_len_filters_AN_filtered.aggregate_entries(hl.expr.aggregators.hist(SV_mt_len_filters_AN_filtered.info.SVLEN[0],
+if (SV_mt_len_filters_AN_filtered.count_rows() >2) :
+    len_hist_filtered = SV_mt_len_filters_AN_filtered.aggregate_entries(hl.expr.aggregators.hist(SV_mt_len_filters_AN_filtered.info.SVLEN[0],
             min_len_filtered_tot, max_len_filtered_tot, 100))
-p = hl.plot.histogram(len_hist_filtered, legend='length (bp)', title='Length Histogram (All SV type after filtration steps)', log=True)
-show(p)
+    p = hl.plot.histogram(len_hist_filtered, legend='length (bp)', title='Length Histogram (All SV type after filtration steps)', log=True)
+    show(p)
 
 
 # In[64]:
 
-
-len_hist_filtered = SV_mt_len_filters_AN_filtered.aggregate_entries(hl.expr.aggregators.hist(SV_mt_len_filters_AN_filtered.info.SVLEN[0],
+if (SV_mt_len_filters_AN_filtered.count_rows() >2) :
+    len_hist_filtered = SV_mt_len_filters_AN_filtered.aggregate_entries(hl.expr.aggregators.hist(SV_mt_len_filters_AN_filtered.info.SVLEN[0],
             -1000, 1000, 100))
-p = hl.plot.histogram(len_hist_filtered, legend='length (bp)', title='Length Histogram (All SV type after filtration steps)', log=True)
-show(p)
+    p = hl.plot.histogram(len_hist_filtered, legend='length (bp)', title='Length Histogram (All SV type after filtration steps)', log=True)
+    show(p)
 
 
 # **SV QC Report**
