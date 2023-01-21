@@ -46,12 +46,12 @@ process SV_paragraph_duphold {
 	
     
 	# this is the main paragraph entrypoint
-	#multigrmpy.py -i $site_vcf \
-        #-m sample.manifest \
-        #-r $reference \
-        #-o paragraph_output \
-        #-t ${task.cpus} \
-        #-M \$M
+	multigrmpy.py -i $site_vcf \
+        -m sample.manifest \
+        -r $reference \
+        -o paragraph_output \
+        -t ${task.cpus} \
+        -M \$M
 	
 	#bcftools index -t paragraph_output/genotypes.vcf.gz
 
