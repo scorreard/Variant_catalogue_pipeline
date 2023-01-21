@@ -27,7 +27,7 @@ from typing import Optional, Dict, List, Union
 
 
 # #Created through the nextflow pipeline
-hl.import_vcf(sys.argv[1],array_elements_required=False, force_bgz=True).write('SV_vcf.mt', overwrite=True)
+hl.import_vcf(sys.argv[1],array_elements_required=False, force_bgz=True, reference_genome=sys.argv[4]).write('SV_vcf.mt', overwrite=True)
 sex_table = (hl.import_table(sys.argv[2], impute=True).key_by('s'))
 
 # **Import file**
