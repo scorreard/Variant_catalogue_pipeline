@@ -26,7 +26,7 @@ process Hail_SV_QC {
 	val run 
 
 	output :
-	path '*.html', emit : graph
+	path '*.html', emit : graph, optional: true
 	path 'SV_QC_report.txt', emit : SV_QC_report
 
 	path 'SV_filtered_with_geno.vcf.bgz*', emit : SV_filtered_with_geno
