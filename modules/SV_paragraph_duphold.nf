@@ -42,7 +42,7 @@ process SV_paragraph_duphold {
 	echo "id\tpath\tdepth\tread length" > sample.manifest
 	echo "\$tsample\t$bam\t\$dp\t150" >> sample.manifest
 	cat sample.manifest
-	M=\$((dp * 5))
+	M=\$((\$(tiwih meandepth $bam) * 5))
 	
     
 	# this is the main paragraph entrypoint
