@@ -35,13 +35,14 @@ process SV_paragraph_duphold {
 	script:
 	output_file = "${bam.simpleName}.paragraph.vcf.gz"
 	"""	
-	dp=\$(tiwih meandepth $bam)
+	dp = 36
+	#dp=\$(tiwih meandepth $bam)
 	tsample=\$(tiwih samplename $bam)
         echo "\$tsample" > sample.txt
 	echo "id\tpath\tdepth\tread length" > sample.manifest
 	echo "\$tsample\t$bam\t\$dp\t150" >> sample.manifest
 	cat sample.manifest
-	#M=\$((dp * 5))
+	M=\$((dp * 5))
 	
     
 	# this is the main paragraph entrypoint
