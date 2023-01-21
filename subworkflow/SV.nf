@@ -74,8 +74,8 @@ workflow SV {
 		sample_sex_file
 
 	main :
-		//Structural Varaints (SV)
-                // Sample specific (Do not need to be run for a previously processed sample)
+	//Structural Varaints (SV)
+	// Sample specific (Do not need to be run for a previously processed sample)
 		SV_smoove(bam, bai, reference, reference_index, assembly, batch, run)
 		sm = SV_smoove_bcftools(SV_smoove.out, assembly, batch, run)
 		mr = SV_manta(bam, bai, reference, reference_index, assembly, batch, run)
@@ -84,7 +84,7 @@ workflow SV {
 		sv_merged = SV_jasmine(svs, reference, reference_index, assembly, batch, run)
 		genotyped = SV_paragraph_duphold(sv_merged, bam, bai, reference, reference_index, assembly, batch, run)
 
-                // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
+	// Aggregated steps (Need to be run everytime a new sample is added to the cohort)
 //		SV_vcfs_txt(SV_paragraph_duphold.out.vcf.collect(), assembly, batch, run, SV)
 //		SV_merge_samples(SV_vcfs_txt.out, assembly, batch, run, SV)
 //                Hail_SV_QC (SV_merge_samples.out.vcf, sample_sex_file, assembly, batch, run)
@@ -92,25 +92,25 @@ workflow SV {
 //                SV_data_organization(SV_annotation.out.annotation_vcf, assembly, run, SV, severity_table)
 
 
-		//Short Tandem Repeats (STR)
-                // Sample specific (Do not need to be run for a previously processed sample)
+	//Short Tandem Repeats (STR)
+	// Sample specific (Do not need to be run for a previously processed sample)
 		expansion_hunter(bam, bai, reference, reference_index, variant_catalog, assembly, batch, run)
 		expansion_hunter_bcftools(expansion_hunter.out.EH_vcf, assembly, batch, run)
 //NEED EXPANSIONHUNTER V5
 
-                // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
+	// Aggregated steps (Need to be run everytime a new sample is added to the cohort)
 //		STR_vcfs_txt(expansion_hunter_bcftools.out.vcf.collect(), assembly, batch, run, STR)
 //  		STR_merge_samples(STR_vcfs_txt.out, assembly, batch, run, STR)
 //		Hail_STR (STR_merge_samples.out.vcf, sample_sex_file, assembly, batch, run) 
   //              STR_data_organization(STR_merge_samples.out.vcf, variant_catalog, assembly, run, STR)
 
-		// Mobile Element Insertions (MEIs)
-                // Sample specific (Do not need to be run for a previously processed sample)
+	// Mobile Element Insertions (MEIs)
+	// Sample specific (Do not need to be run for a previously processed sample)
 		samtools_fixmate(bam, bai, assembly, batch, run)
-//The following steps are deactivated for the test version as there is no container for MELT, it requires local installation
+	//The following steps are deactivated for the test version as there is no container for MELT, it requires local installation
 //		melt(samtools_fixmate.out.samples_fixmate_bam, samtools_fixmate.out.samples_fixmate_bam_index, reference, reference_index, transposon_file, genes_file, assembly, batch, run)
                 
-		// Aggregated steps (Need to be run everytime a new sample is added to the cohort)
+	// Aggregated steps (Need to be run everytime a new sample is added to the cohort)
 //		MEI_vcfs_txt(melt.out.vcf.collect(), assembly, batch, run, MEI)
 //		MEI_merge_samples(MEI_vcfs_txt.out, assembly, batch, run, MEI)
 //              Hail_MEI_QC (MEI_merge_samples.out.vcf, sample_sex_file, assembly, batch, run)
