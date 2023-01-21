@@ -95,7 +95,7 @@ workflow SV {
 	//Short Tandem Repeats (STR)
 	// Sample specific (Do not need to be run for a previously processed sample)
 		expansion_hunter(bam, bai, reference, reference_index, variant_catalog, assembly, batch, run)
-		expansion_hunter_bcftools(expansion_hunter.out.EH_vcf, assembly, batch, run)
+//		expansion_hunter_bcftools(expansion_hunter.out.EH_vcf, assembly, batch, run)
 //NEED EXPANSIONHUNTER V5
 
 	// Aggregated steps (Need to be run everytime a new sample is added to the cohort)
