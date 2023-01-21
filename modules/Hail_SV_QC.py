@@ -654,8 +654,10 @@ if (het_freq_hwe_SV_table.shape[0] >2) :
 
 # In[46]:
 
-
-intervals = [hl.parse_locus_interval(x, reference_genome=sys.argv[4]) for x in ['X', 'Y', '1-22']]
+if (sys.argv[4] == 'GRCh37') :
+    intervals = [hl.parse_locus_interval(x, reference_genome='GRCh37') for x in ['X', 'Y', '1-22']]
+else :
+    intervals = [hl.parse_locus_interval(x, reference_genome='GRCh38') for x in ['chrX', 'chrY', 'chr1-chr22']]  
 SV_mt_filtered = hl.filter_intervals(mt, intervals, keep=True)
 
 
