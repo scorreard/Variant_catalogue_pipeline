@@ -313,47 +313,47 @@ max_len_inv = INV_mt.aggregate_rows(hl.agg.max(INV_mt.info.SVLEN[0]))
 
 # In[18]:
 
-
-len_hist = mt.aggregate_entries(hl.expr.aggregators.hist(mt.info.SVLEN[0],
+if (mt.count_rows() >2) :
+    len_hist = mt.aggregate_entries(hl.expr.aggregators.hist(mt.info.SVLEN[0],
             min_len_tot, max_len_tot, 100))
-p = hl.plot.histogram(len_hist, legend='length (bp)', title='Length Histogram (All SV type)', log= True)
-show(p)
+    p = hl.plot.histogram(len_hist, legend='length (bp)', title='Length Histogram (All SV type)', log= True)
+    save(p)
 
 
 # In[19]:
 
 
-len_hist_del = DEL_mt.aggregate_entries(hl.expr.aggregators.hist(DEL_mt.info.SVLEN[0],
+    len_hist_del = DEL_mt.aggregate_entries(hl.expr.aggregators.hist(DEL_mt.info.SVLEN[0],
             min_len_del, max_len_del, 100))
-p = hl.plot.histogram(len_hist_del, legend='length (bp)', title='Length Histogram (Deletion)', log=True)
-show(p)
+    p = hl.plot.histogram(len_hist_del, legend='length (bp)', title='Length Histogram (Deletion)', log=True)
+    save(p)
 
 
 # In[20]:
 
 
-len_hist_dup = DUP_mt.aggregate_entries(hl.expr.aggregators.hist(DUP_mt.info.SVLEN[0], 
+    len_hist_dup = DUP_mt.aggregate_entries(hl.expr.aggregators.hist(DUP_mt.info.SVLEN[0], 
                                                                  min_len_dup, max_len_dup, 100))
-p = hl.plot.histogram(len_hist_dup, legend='length (bp)', title='Length Histogram (Duplication)', log=True)
-show(p)
+    p = hl.plot.histogram(len_hist_dup, legend='length (bp)', title='Length Histogram (Duplication)', log=True)
+    save(p)
 
 
 # In[21]:
 
 
-len_hist_ins = INS_mt.aggregate_entries(hl.expr.aggregators.hist(INS_mt.info.SVLEN[0], 
+    len_hist_ins = INS_mt.aggregate_entries(hl.expr.aggregators.hist(INS_mt.info.SVLEN[0], 
                                                                  min_len_ins, max_len_ins, 100))
-p = hl.plot.histogram(len_hist_ins, legend='length (bp)', title='Length Histogram (Insertion)')
-show(p)
+    p = hl.plot.histogram(len_hist_ins, legend='length (bp)', title='Length Histogram (Insertion)')
+    save(p)
 
 
 # In[22]:
 
 
-len_hist_inv = INV_mt.aggregate_entries(hl.expr.aggregators.hist(INV_mt.info.SVLEN[0], 
+    len_hist_inv = INV_mt.aggregate_entries(hl.expr.aggregators.hist(INV_mt.info.SVLEN[0], 
                                                                  min_len_ins, max_len_inv, 100))
-p = hl.plot.histogram(len_hist_inv, legend='length (bp)', title='Length Histogram (Inversion)', log=True)
-show(p)
+    p = hl.plot.histogram(len_hist_inv, legend='length (bp)', title='Length Histogram (Inversion)', log=True)
+    save(p)
 
 
 # In[23]:
