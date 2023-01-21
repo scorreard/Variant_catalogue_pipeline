@@ -565,56 +565,56 @@ het_freq_hwe_SV_table.rename(columns = {het_freq_hwe_SV_table.columns[2]:"het_fr
 
 # In[39]:
 
-
-plot_histo(DP_SV_table,
+if (DP_SV_table.shape[0] >2) :
+    plot_histo(DP_SV_table,
            mt.variant_qc.dp_stats.mean,
            'Mean Depth per SV')
 
 
 # In[40]:
 
-
-plot_histo(AN_SV_table,
+if (AN_SV_table.shape[0] >2) :
+    plot_histo(AN_SV_table,
            mt.variant_qc.AN,
            'Allele number per SV')
 
 
 # In[41]:
 
-
-plot_histo(call_rate_SV_table,
+if (call_rate_SV_table.shape[0] >2) :
+    plot_histo(call_rate_SV_table,
            mt.variant_qc.call_rate,
            'Call rate per SV')
 
 
 # In[42]:
 
-
-plot_histo(n_called_SV_table,
+if (n_called_SV_table.shape[0] >2) :
+    plot_histo(n_called_SV_table,
            mt.variant_qc.n_called,
            'Number of samples with a called genotype per SV')
 
 
 # In[43]:
 
-
-plot_histo(n_not_called_SV_table,
+if (n_not_called_SV_table.shape[0] >2) :
+    plot_histo(n_not_called_SV_table,
            mt.variant_qc.n_not_called,
            'Number of samples with a missing genotype per SV')
 
 
 # In[44]:
 
-
-plot_histo(p_value_hwe_SV_table,
+if (p_value_hwe_SV_table.shape[0] >2) :
+    plot_histo(p_value_hwe_SV_table,
            mt.variant_qc.p_value_hwe,
            'p-value from two-sided test of Hardy-Weinberg equilibrium per SV')
 
 
 # In[45]:
 
-
-plot_sp (het_freq_hwe_SV_table,
+if (het_freq_hwe_SV_table.shape[0] >2) :
+    plot_sp (het_freq_hwe_SV_table,
          mt.variant_qc.het_freq_hwe,
          n_het_SV_table,
          mt.variant_qc.n_het,
