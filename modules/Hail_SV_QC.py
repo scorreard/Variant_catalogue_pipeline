@@ -758,7 +758,7 @@ n_removed_AN = SV_mt_len_filters_filtered.count()[0]-SV_mt_len_filters_AN_filter
 if (SV_mt_len_filters_filtered.count()[0]>0) :
     perc_SV_len_filters_AN_filtered = (SV_mt_len_filters_filtered.count()[0]-SV_mt_len_filters_AN_filtered.count()[0])/SV_mt_len_filters_filtered.count()[0] * 100
 else :
-    perc_SV_len_filters_filtered = 0
+    perc_SV_len_filters_AN_filtered = 0
 
 
 # **Future updates**
