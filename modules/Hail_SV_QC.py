@@ -113,12 +113,12 @@ def plot_sp (table_x_axis, mt_x_axis, table_y_axis, mt_y_axis, x_variable, y_var
 
 # In[8]:
 
-
-qual_hist = mt.aggregate_entries(hl.expr.aggregators.hist(mt.qual,
+if (mt.aggregate_rows.shape[0] >2) :
+    qual_hist = mt.aggregate_entries(hl.expr.aggregators.hist(mt.qual,
             mt.aggregate_rows(hl.agg.min(mt.qual)),
             mt.aggregate_rows(hl.agg.max(mt.qual)), 100))
-p = hl.plot.histogram(qual_hist, legend='Qual', title='Qual (All SV type)', log=True)
-show(p)
+    p = hl.plot.histogram(qual_hist, legend='Qual', title='Qual (All SV type)', log=True)
+    show(p)
 
 
 # Replace AN and {} by "none" in the filter column
@@ -126,7 +126,7 @@ show(p)
 # In[9]:
 
 
-mt = mt.annotate_rows(filters = hl.if_else(hl.len(mt.filters) > 0,
+    mt = mt.annotate_rows(filters = hl.if_else(hl.len(mt.filters) > 0,
                             mt.filters,
                             hl.set(["none"])))
 
@@ -134,7 +134,7 @@ mt = mt.annotate_rows(filters = hl.if_else(hl.len(mt.filters) > 0,
 # In[10]:
 
 
-mt = mt.annotate_rows(filters =hl.if_else(hl.is_defined(mt.filters),
+    mt = mt.annotate_rows(filters =hl.if_else(hl.is_defined(mt.filters),
                                                 mt.filters,
                                                 hl.set(["none"])))
 
@@ -142,19 +142,19 @@ mt = mt.annotate_rows(filters =hl.if_else(hl.is_defined(mt.filters),
 # In[11]:
 
 
-filters_ht = mt.rows()
+    filters_ht = mt.rows()
 
 
 # In[12]:
 
 
-filters_table = filters_ht.group_by(filters_ht.filters).aggregate(n=hl.agg.count())
+    filters_table = filters_ht.group_by(filters_ht.filters).aggregate(n=hl.agg.count())
 
 
 # In[13]:
 
 
-filters_table.export('SV_filters.txt', delimiter=' : ')
+    filters_table.export('SV_filters.txt', delimiter=' : ')
 
 
 # SV : Exploration of the info column
