@@ -44,22 +44,22 @@ process SV_paragraph_duphold {
 	cat sample.manifest
     
 	# this is the main paragraph entrypoint
-	multigrmpy.py -i $site_vcf \
-        -m sample.manifest \
-        -r $reference \
-        -o paragraph_output \
-        -t ${task.cpus} \
-        -M \$M
+	#multigrmpy.py -i $site_vcf \
+        #-m sample.manifest \
+        #-r $reference \
+        #-o paragraph_output \
+        #-t ${task.cpus} \
+        #-M \$M
 	
-	bcftools index -t paragraph_output/genotypes.vcf.gz
+	#bcftools index -t paragraph_output/genotypes.vcf.gz
 
-	bcftools view -S sample.txt -O z -o ${bam.simpleName}_genotypes.vcf.gz paragraph_output/genotypes.vcf.gz
-        bcftools annotate --set-id '%CHROM\\_%POS\\_%SVTYPE\\_%SVLEN' -O z -o ${bam.simpleName}_genotypes_setid.vcf.gz ${bam.simpleName}_genotypes.vcf.gz
+	#bcftools view -S sample.txt -O z -o ${bam.simpleName}_genotypes.vcf.gz paragraph_output/genotypes.vcf.gz
+        #bcftools annotate --set-id '%CHROM\\_%POS\\_%SVTYPE\\_%SVLEN' -O z -o ${bam.simpleName}_genotypes_setid.vcf.gz ${bam.simpleName}_genotypes.vcf.gz
 
-	bcftools index -t ${bam.simpleName}_genotypes_setid.vcf.gz
+	#bcftools index -t ${bam.simpleName}_genotypes_setid.vcf.gz
 
-	# duphold adds depth annotations looking at coverage fold-change around Svs
-	#duphold -d -v t/genotypes.vcf.gz -b $bam -f $reference -t 4 -o $output_file
-	#bcftools index --threads 3 $output_file
+	## duphold adds depth annotations looking at coverage fold-change around Svs
+	##duphold -d -v t/genotypes.vcf.gz -b $bam -f $reference -t 4 -o $output_file
+	##bcftools index --threads 3 $output_file
 	"""
 }
