@@ -35,15 +35,17 @@ process SV_paragraph_duphold {
 	script:
 	output_file = "${bam.simpleName}.paragraph.vcf.gz"
 	"""
-	echo "\$(tiwih meandepth $bam)*5"
+	echo "\$(tiwih meandepth $bam)"
 	
+	
+	tsample=\$(tiwih samplename $bam)
+        echo "\$tsample" > sample.txt
+	echo "id\tpath\tdepth\tread length" > sample.manifest
+	echo "\$tsample\t$bam\t\$dp\t150" >> sample.manifest
+	cat sample.manifest
 	#dp=\$(tiwih meandepth $bam)
-	#tsample=\$(tiwih samplename $bam)
-        #echo "\$tsample" > sample.txt
-	#echo "id\tpath\tdepth\tread length" > sample.manifest
-	#echo "\$tsample\t$bam\t\$dp\t150" >> sample.manifest
 	#M=\$((dp * 5))
-	#cat sample.manifest
+	
     
 	# this is the main paragraph entrypoint
 	#multigrmpy.py -i $site_vcf \
