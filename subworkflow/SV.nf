@@ -95,7 +95,7 @@ workflow SV {
 		//Short Tandem Repeats (STR)
                 // Sample specific (Do not need to be run for a previously processed sample)
 		expansion_hunter(bam, bai, reference, reference_index, variant_catalog, assembly, batch, run)
-//		expansion_hunter_bcftools(expansion_hunter.out.EH_vcf, assembly, batch, run)
+		expansion_hunter_bcftools(expansion_hunter.out.EH_vcf, assembly, batch, run)
 //NEED EXPANSIONHUNTER V5
 
                 // Aggregated steps (Need to be run everytime a new sample is added to the cohort)
@@ -107,6 +107,7 @@ workflow SV {
 		// Mobile Element Insertions (MEIs)
                 // Sample specific (Do not need to be run for a previously processed sample)
 		samtools_fixmate(bam, bai, assembly, batch, run)
+//The following steps are deactivated for the test version as there is no container for MELT, it requires local installation
 //		melt(samtools_fixmate.out.samples_fixmate_bam, samtools_fixmate.out.samples_fixmate_bam_index, reference, reference_index, transposon_file, genes_file, assembly, batch, run)
                 
 		// Aggregated steps (Need to be run everytime a new sample is added to the cohort)
