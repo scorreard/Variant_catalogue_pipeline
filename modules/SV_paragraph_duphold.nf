@@ -35,7 +35,7 @@ process SV_paragraph_duphold {
 	script:
 	output_file = "${bam.simpleName}.paragraph.vcf.gz"
 	"""
-	echo "\$(tiwih meandepth $bam)"
+	echo "\$(tiwih meandepth $bam)" > dp
 	
 	#dp=\$(tiwih meandepth $bam)
 	#tsample=\$(tiwih samplename $bam)
