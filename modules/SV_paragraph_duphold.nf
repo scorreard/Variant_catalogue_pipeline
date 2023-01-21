@@ -55,10 +55,10 @@ process SV_paragraph_duphold {
 	
 	bcftools index -t paragraph_output/genotypes.vcf.gz
 
-	#bcftools view -S sample.txt -O z -o ${bam.simpleName}_genotypes.vcf.gz paragraph_output/genotypes.vcf.gz
-        #bcftools annotate --set-id '%CHROM\\_%POS\\_%SVTYPE\\_%SVLEN' -O z -o ${bam.simpleName}_genotypes_setid.vcf.gz ${bam.simpleName}_genotypes.vcf.gz
+	bcftools view -S sample.txt -O z -o ${bam.simpleName}_genotypes.vcf.gz paragraph_output/genotypes.vcf.gz
+        bcftools annotate --set-id '%CHROM\\_%POS\\_%SVTYPE\\_%SVLEN' -O z -o ${bam.simpleName}_genotypes_setid.vcf.gz ${bam.simpleName}_genotypes.vcf.gz
 
-	#bcftools index -t ${bam.simpleName}_genotypes_setid.vcf.gz
+	bcftools index -t ${bam.simpleName}_genotypes_setid.vcf.gz
 
 	## duphold adds depth annotations looking at coverage fold-change around Svs
 	##duphold -d -v t/genotypes.vcf.gz -b $bam -f $reference -t 4 -o $output_file
