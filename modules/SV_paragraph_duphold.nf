@@ -8,7 +8,7 @@
 
 process SV_paragraph_duphold {
         tag "${bam.simpleName}"
-	label 'process_medium'
+	label 'process_high'
 
         container = "docker://brentp/rare-disease-sv:v0.1.2"
 
