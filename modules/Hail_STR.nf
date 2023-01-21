@@ -36,7 +36,7 @@ process Hail_STR {
 	script:
 	"""
 	mkdir -p $params.tmp_dir
-        python ${projectDir}/modules/Hail_STR.py $vcf_sample_filtered $sample_sex_file $params.tmp_dir
+        python ${projectDir}/modules/Hail_STR.py $vcf_sample_filtered $sample_sex_file $params.tmp_dir $assembly
 	"""
 }
 
