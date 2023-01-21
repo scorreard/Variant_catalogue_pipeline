@@ -361,14 +361,14 @@ if (mt.count_rows() >2) :
 
 #Only calculated for variants identified by smoove
 
-SU_hist_tot = mt.aggregate_entries(hl.expr.aggregators.hist(mt.info.SU[0], 
-    mt.aggregate_rows(hl.agg.min(mt.info.SU[0])),
-    mt.aggregate_rows(hl.agg.max(mt.info.SU[0])),
-    100))
+    SU_hist_tot = mt.aggregate_entries(hl.expr.aggregators.hist(mt.info.SU[0], 
+        mt.aggregate_rows(hl.agg.min(mt.info.SU[0])),
+        mt.aggregate_rows(hl.agg.max(mt.info.SU[0])),
+        100))
 
-p = hl.plot.histogram(SU_hist_tot, legend='SU',
+    p = hl.plot.histogram(SU_hist_tot, legend='SU',
                       title='Number of pieces of evidence supporting the SV across all samples - Smoove SV, all types')
-show(p)
+    show(p)
 
 
 # In[24]:
@@ -376,14 +376,14 @@ show(p)
 
 #Only calculated for variants identified by smoove
 
-PE_hist_tot = mt.aggregate_entries(hl.expr.aggregators.hist(mt.info.PE[0], 
-    mt.aggregate_rows(hl.agg.min(mt.info.PE[0])),
-    mt.aggregate_rows(hl.agg.max(mt.info.PE[0])),
-    100))
+    PE_hist_tot = mt.aggregate_entries(hl.expr.aggregators.hist(mt.info.PE[0], 
+        mt.aggregate_rows(hl.agg.min(mt.info.PE[0])),
+        mt.aggregate_rows(hl.agg.max(mt.info.PE[0])),
+        100))
 
-p = hl.plot.histogram(PE_hist_tot, legend='PE',
+    p = hl.plot.histogram(PE_hist_tot, legend='PE',
                       title='Number of paired-end reads supporting the SV across all samples - Smoove SV, all types')
-show(p)
+    show(p)
 
 
 # In[25]:
@@ -391,97 +391,97 @@ show(p)
 
 #Only calculated for variants identified by smoove
 
-SR_hist_tot = mt.aggregate_entries(hl.expr.aggregators.hist(mt.info.SR[0], 
-    mt.aggregate_rows(hl.agg.min(mt.info.SR[0])),
-    mt.aggregate_rows(hl.agg.max(mt.info.SR[0])),
-    100))
+    SR_hist_tot = mt.aggregate_entries(hl.expr.aggregators.hist(mt.info.SR[0], 
+        mt.aggregate_rows(hl.agg.min(mt.info.SR[0])),
+        mt.aggregate_rows(hl.agg.max(mt.info.SR[0])),
+        100))
 
-p = hl.plot.histogram(SR_hist_tot, legend='SR',
+    p = hl.plot.histogram(SR_hist_tot, legend='SR',
                       title='Number of split reads supporting the SV across all samples - Smoove SV, all types')
-show(p)
+    show(p)
 
 
 # In[26]:
 
 
-SUPP = hl.int(mt.info.SUPP)
-SUPP_hist_tot = mt.aggregate_entries(hl.expr.aggregators.hist(SUPP, 
-    mt.aggregate_rows(hl.agg.min(SUPP)),
-    mt.aggregate_rows(hl.agg.max(SUPP)),
-    100))
+    SUPP = hl.int(mt.info.SUPP)
+    SUPP_hist_tot = mt.aggregate_entries(hl.expr.aggregators.hist(SUPP, 
+        mt.aggregate_rows(hl.agg.min(SUPP)),
+        mt.aggregate_rows(hl.agg.max(SUPP)),
+        100))
 
-p = hl.plot.histogram(SUPP_hist_tot, legend='SUPP',
+    p = hl.plot.histogram(SUPP_hist_tot, legend='SUPP',
                       title='Number of samples supporting the SV')
-show(p)
+    show(p)
 
 
 # In[27]:
 
 
-p = hl.plot.scatter(x=SUPP,
+    p = hl.plot.scatter(x=SUPP,
                    y=mt.info.AC[0],
                   xlabel="SUPP : Number of samples supporting the SV",
                   ylabel="AC : Allele count in genotypes",
                 title="SUPP/AC")
-show(p)
+    show(p)
 
 
 # In[28]:
 
 
-VARCALLS = hl.int(mt.info.VARCALLS)
-VARCALLS_hist_tot = mt.aggregate_entries(hl.expr.aggregators.hist(VARCALLS, 
-    mt.aggregate_rows(hl.agg.min(VARCALLS)),
-    mt.aggregate_rows(hl.agg.max(VARCALLS)),
-    100))
+    VARCALLS = hl.int(mt.info.VARCALLS)
+    VARCALLS_hist_tot = mt.aggregate_entries(hl.expr.aggregators.hist(VARCALLS, 
+        mt.aggregate_rows(hl.agg.min(VARCALLS)),
+        mt.aggregate_rows(hl.agg.max(VARCALLS)),
+        100))
 
-p = hl.plot.histogram(VARCALLS_hist_tot, legend='VARCALLS',
+    p = hl.plot.histogram(VARCALLS_hist_tot, legend='VARCALLS',
                       title='The number of variant calls supporting this SV')
-show(p)
+    show(p)
 
 
 # In[29]:
 
 
-p = hl.plot.scatter(x=SUPP,
+    p = hl.plot.scatter(x=SUPP,
                    y=VARCALLS,
                   xlabel="SUPP : Number of samples supporting the SV",
                   ylabel="VARCALLS : The number of variant calls supporting this SV",
                 title="SUPP / VARCALLS")
-show(p)
+    show(p)
 
 
 # In[30]:
 
 
-p = hl.plot.scatter(x=mt.info.SU[0],
+    p = hl.plot.scatter(x=mt.info.SU[0],
                    y=mt.info.PE[0],
                   xlabel="SU : Number of pieces of evidence supporting the SV across all samples",
                   ylabel="PE : Number of paired-end reads supporting the SV across all samples",
                 title="SU/PE")
-show(p)
+    show(p)
 
 
 # In[31]:
 
 
-p = hl.plot.scatter(x=mt.info.SU[0],
+    p = hl.plot.scatter(x=mt.info.SU[0],
                    y=mt.info.SR[0],
                   xlabel="SU : Number of pieces of evidence supporting the SV across all samples",
                   ylabel="SR : Number of split reads supporting the SV across all samples",
                 title="SU/SR")
-show(p)
+    show(p)
 
 
 # In[32]:
 
 
-p = hl.plot.scatter(x=mt.info.PE[0],
+    p = hl.plot.scatter(x=mt.info.PE[0],
                    y=mt.info.SR[0],
                   xlabel="PE : Number of paired-end reads supporting the SV across all samples",
                   ylabel="SR : Number of split reads supporting the SV across all samples",
                 title="PE/SR")
-show(p)
+    show(p)
 
 
 # **SV Hail QC**
