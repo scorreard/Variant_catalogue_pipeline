@@ -685,8 +685,10 @@ SV_mt_len_filtered = SV_mt_filtered.filter_rows(
 
 
 n_removed_length = SV_mt_filtered.count()[0]-SV_mt_len_filtered.count()[0]
-perc_SV_len_filtered = (SV_mt_filtered.count()[0]-SV_mt_len_filtered.count()[0])/SV_mt_filtered.count()[0] * 100
-
+if (SV_mt_filtered.count()[0]>0) :
+    perc_SV_len_filtered = (SV_mt_filtered.count()[0]-SV_mt_len_filtered.count()[0])/SV_mt_filtered.count()[0] * 100
+else :
+    perc_SV_len_filtered = 0
 
 # **Step 3 : Filters**
 # 
@@ -706,8 +708,10 @@ SV_mt_len_filters_filtered = SV_mt_len_filtered.filter_rows(
 
 
 n_removed_filters = SV_mt_len_filtered.count()[0]-SV_mt_len_filters_filtered.count()[0]
-perc_SV_len_filters_filtered = (SV_mt_len_filtered.count()[0]-SV_mt_len_filters_filtered.count()[0])/SV_mt_len_filtered.count()[0] * 100
-
+if (SV_mt_len_filtered.count()[0]>0) :
+    perc_SV_len_filters_filtered = (SV_mt_len_filtered.count()[0]-SV_mt_len_filters_filtered.count()[0])/SV_mt_len_filtered.count()[0] * 100
+else :
+    perc_SV_len_filters_filtered = 0
 
 # **Step 4 : Hail filters**
 #     
@@ -751,7 +755,10 @@ SV_mt_len_filters_AN_filtered=SV_mt_len_filters_filtered.filter_rows(
 
 
 n_removed_AN = SV_mt_len_filters_filtered.count()[0]-SV_mt_len_filters_AN_filtered.count()[0]
-perc_SV_len_filters_AN_filtered = (SV_mt_len_filters_filtered.count()[0]-SV_mt_len_filters_AN_filtered.count()[0])/SV_mt_len_filters_filtered.count()[0] * 100
+if (SV_mt_len_filters_filtered.count()[0]>0) :
+    perc_SV_len_filters_AN_filtered = (SV_mt_len_filters_filtered.count()[0]-SV_mt_len_filters_AN_filtered.count()[0])/SV_mt_len_filters_filtered.count()[0] * 100
+else :
+    perc_SV_len_filters_filtered = 0
 
 
 # **Future updates**
@@ -764,7 +771,10 @@ perc_SV_len_filters_AN_filtered = (SV_mt_len_filters_filtered.count()[0]-SV_mt_l
 
 
 n_SV_removed = mt.count()[0]-SV_mt_len_filters_AN_filtered.count()[0]
-perc_SV_removed = (mt.count()[0]-SV_mt_len_filters_AN_filtered.count()[0])/mt.count()[0] * 100
+if (mt.count()[0]>0) :
+    perc_SV_removed = (mt.count()[0]-SV_mt_len_filters_AN_filtered.count()[0])/mt.count()[0] * 100
+else :
+    perc_SV_removed = 0
 n_var_after_filtering = SV_mt_len_filters_AN_filtered.count()[0]
 
 
