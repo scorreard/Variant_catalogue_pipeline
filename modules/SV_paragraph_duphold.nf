@@ -35,16 +35,20 @@ process SV_paragraph_duphold {
 	script:
 	output_file = "${bam.simpleName}.paragraph.vcf.gz"
 	"""	
-	dp=\$((36))
+	#Because tiwih meandepth was is sometimes failing, a specific value of M was set up. If Tiwih work on your server, you should use the varaible based on coverage.
 	#dp=\$(tiwih meandepth $bam)
+	#M=\$((dp * 5))
+	
+	#Static value of dp and M
+	dp=\$((30))
+	
 	tsample=\$(tiwih samplename $bam)
         echo "\$tsample" > sample.txt
 	echo "id\tpath\tdepth\tread length" > sample.manifest
 	echo "\$tsample\t$bam\t\$dp\t150" >> sample.manifest
 	cat sample.manifest
-	M=\$((\$(tiwih meandepth $bam) * 5))
-	
-    
+	M=\$((dp * 5))
+	    
 	# this is the main paragraph entrypoint
 	multigrmpy.py -i $site_vcf \
         -m sample.manifest \
