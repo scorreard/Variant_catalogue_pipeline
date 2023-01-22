@@ -23,6 +23,7 @@ process SV_smoove {
 	val assembly
 	val batch
 	val run
+	file smoove_bed_exclude
 
 	output:
 	file("${bam.simpleName}.vcf.gz")	
@@ -39,7 +40,7 @@ process SV_smoove {
 		--outdir . \
 		--name ${bam.simpleName} \
 		--fasta ${reference}\
-		--exclude ${params.smoove_bed_exclude} \
+		--exclude ${smoove_bed_exclude} \
 		${bam}
   		##-p ${task.cpus} 
 	
