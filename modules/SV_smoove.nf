@@ -39,6 +39,7 @@ process SV_smoove {
 		--outdir . \
 		--name ${bam.simpleName} \
 		--fasta ${reference}\
+		--exclude ${params.smoove_bed_exclude} \
 		${bam}
   		##-p ${task.cpus} 
 	
