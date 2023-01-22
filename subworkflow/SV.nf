@@ -66,6 +66,7 @@ workflow SV {
 	spliceai_indel_index			= file (params.spliceai_indel_index)
 	dir_plugin				= file (params.dir_plugin)
         severity_table                          = file (params.severity_table)
+	smoove_bed_exclude			= file (params.smoove_bed_exclude)
 
 	// Workflow start here
 	take : 
