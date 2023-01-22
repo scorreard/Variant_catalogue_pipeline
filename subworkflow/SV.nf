@@ -78,7 +78,7 @@ workflow SV {
 	//Structural Varaints (SV)
 	// Sample specific (Do not need to be run for a previously processed sample)
 		SV_smoove(bam, bai, reference, reference_index, assembly, batch, run)
-		sm = SV_smoove_bcftools(SV_smoove.out, assembly, batch, run)
+		sm = SV_smoove_bcftools(SV_smoove.out, assembly, batch, run, smoove_bed_exclude)
 		mr = SV_manta(bam, bai, reference, reference_index, assembly, batch, run)
 		sv_groups = mr.concat(sm) | groupTuple(by: 2)
 		svs = SV_concat_by_sample(sv_groups, assembly, batch, run) | collect
