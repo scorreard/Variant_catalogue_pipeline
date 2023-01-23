@@ -12,7 +12,10 @@ process annotation_table_merged {
 	tag "${chr}"
 	label 'process_high'
 
-	container = 'https://depot.galaxyproject.org/singularity/ensembl-vep%3A108.2--pl5321h4a94de4_0'
+   conda "bioconda::ensembl-vep=108.2"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/ensembl-vep:108.2--pl5321h4a94de4_0' :
+        'quay.io/biocontainers/ensembl-vep:108.2--pl5321h4a94de4_0' }"
 	
         publishDir "$params.outdir_pop/${assembly}/${run}/${var_type}/VEP_annotation/", mode: 'copy', pattern : '*_annotation_table_merged*'
 	publishDir "$params.outdir_pop/${assembly}/${run}/QC/${var_type}/", mode: 'copy', pattern : '*_VEP_merged_stats*'
