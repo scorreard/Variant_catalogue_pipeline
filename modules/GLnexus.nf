@@ -10,8 +10,11 @@
 process GLnexus_cli {
 	label 'process_high'
 
-	container = "https://depot.galaxyproject.org/singularity/glnexus:1.4.1--h40d77a6_0"
-
+    conda "bioconda::glnexus=1.4.1"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/glnexus:1.4.1--h40d77a6_0' :
+        'quay.io/biocontainers/glnexus:1.4.1--h40d77a6_0' }"
+	
 	input :
 	file list_gvcf
 	val run
