@@ -13,8 +13,11 @@ process expansion_hunter {
 	tag "${bam.simpleName}"
 	label 'process_medium'
 
-	container = 'https://depot.galaxyproject.org/singularity/expansionhunter:4.0.2--he785bd8_0'
-
+    conda "bioconda::expansionhunter=4.0.2"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/expansionhunter:4.0.2--he785bd8_0' :
+        'quay.io/biocontainers/expansionhunter:4.0.2--he785bd8_0' }"
+	
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/STR/Sample/", mode: 'copyNoFollow'
 
 	input:
