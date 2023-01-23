@@ -11,8 +11,11 @@ process Mosdepth {
         tag "$bam"
 	label 'process_low'
 
-        container = "https://depot.galaxyproject.org/singularity/mosdepth:0.3.3--hdfd78af_1"
-
+    conda "bioconda::mosdepth=0.3.3"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/mosdepth:0.3.3--hdfd78af_1' :
+        'quay.io/biocontainers/mosdepth:0.3.3--hdfd78af_1'}"
+	
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Individuals/${bam.simpleName}/Mosdepth/", mode: 'copy'
 
 	input :
