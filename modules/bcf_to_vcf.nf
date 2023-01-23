@@ -13,8 +13,11 @@ process bcf_to_vcf {
 	label 'process_high'
         publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/SNV/", mode: 'copy'
 
-	container = 'https://depot.galaxyproject.org/singularity/bcftools:1.16--hfe4b78e_1'
-
+    conda "bioconda::bcftools=1.16"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/bcftools:1.16--hfe4b78e_1':
+        'quay.io/biocontainers/bcftools:1.16--hfe4b78e_1' }"
+	
 	input :
 	file bcf_file
 	val assembly
