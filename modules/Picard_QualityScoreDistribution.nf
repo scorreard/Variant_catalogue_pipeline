@@ -7,7 +7,10 @@ process Picard_QualityScoreDistribution {
         tag "${bam.simpleName}"
 	label 'process_low'
 
- 	container = 'https://depot.galaxyproject.org/singularity/picard:2.27.4--hdfd78af_0'
+    conda "bioconda::picard=2.27.4 r::r-base"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/picard:2.27.4--hdfd78af_0' :
+        'quay.io/biocontainers/picard:2.27.4--hdfd78af_0' }"
 
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/QC/Individuals/${bam.simpleName}/Picard_Metrics/", mode: 'copyNoFollow'
 	
