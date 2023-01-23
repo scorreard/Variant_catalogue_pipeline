@@ -11,8 +11,11 @@ process SV_smoove {
 	tag "${bam.simpleName}"
 	label 'process_medium'
 
-	container = "https://depot.galaxyproject.org/singularity/smoove:0.2.8--h9ee0642_1" 
-
+    conda "bioconda::smoove=0.2.8"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/smoove:0.2.8--h9ee0642_1' :
+        'quay.io/biocontainers/smoove:0.2.8--h9ee0642_1' }"
+	
 	publishDir "$params.outdir_ind/${assembly}/${batch}/${run}/SV/Sample/smoove", mode: 'copyNoFollow'
 	
 	input:
