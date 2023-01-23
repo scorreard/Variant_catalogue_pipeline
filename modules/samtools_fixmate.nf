@@ -10,8 +10,11 @@ process samtools_fixmate {
 	label 'process_medium'
 	tag "${bam.SimpleName}"
 	
-	container = 'https://depot.galaxyproject.org/singularity/samtools:1.16.1--h6899075_1'
-
+  conda "bioconda::samtools=1.16.1"
+    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
+        'https://depot.galaxyproject.org/singularity/samtools:1.16.1--h6899075_1' :
+        'quay.io/biocontainers/samtools:1.16.1--h6899075_1' }"
+	
 	input :
 	file bam
 	file bai
