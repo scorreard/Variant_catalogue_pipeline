@@ -28,6 +28,8 @@ The test is incomplete for the SV part as expansionHunter V5 (for STR calling) a
 
 The test can only be done with GRCh38
 
+If the test fails, please, create an issue. Thanks.
+
 
 
 
