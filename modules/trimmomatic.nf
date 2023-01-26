@@ -27,7 +27,7 @@ process TRIMMOMATIC {
         ${sample}.paired.trim_1.fastq.gz \\
         ${sample}.unpaired.trim_1.fastq.gz \\
         ${sample}.paired.trim_2.fastq.gz \\
-        ${sample}.unpaired.trim_2.fastq.gz" \\
+        ${sample}.unpaired.trim_2.fastq.gz \\
         ILLUMINACLIP:TruSeq3-PE.fa:2:30:10:2:True \\
         LEADING:3 \\
         TRAILING:3 \\
