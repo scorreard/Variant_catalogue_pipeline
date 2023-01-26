@@ -15,7 +15,7 @@ process TRIMMOMATIC {
 	val run
 
 	output :
-	path("*.paired.trim*.fastq.gz"), emit: trimmed_reads
+	tuple val(sample), path("*.paired.trim*.fastq.gz"), emit: trimmed_reads
 
 	script :
 	"""
