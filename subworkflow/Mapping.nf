@@ -41,7 +41,7 @@ workflow Mapping {
 	main:
 		bwa_index(reference)
 	//With trimmomatic 
-	//	TRIMMOMATIC(read_pairs_ch)
+	//	TRIMMOMATIC(read_pairs_ch, outdir_ind, assembly, batch, run)
 	//	ch_trim  = Channel.empty()
 	//	ch_trim = TRIMMOMATIC.out.trimmed_reads
 	//	align_sort_output_bam(reference, bwa_index.out, ch_trim, assembly, batch, run)
