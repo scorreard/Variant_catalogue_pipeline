@@ -8,8 +8,8 @@ process TRIMMOMATIC {
 
 	
 	input:
-  tuple (val(sample), file(reads)) 
-  path outdir_ind
+	tuple (val(sample), file(reads)) 
+	path outdir_ind
 	val assembly
 	val batch
 	val run
@@ -19,19 +19,18 @@ process TRIMMOMATIC {
 
 	script :
 	"""
-    trimmomatic \\
+	    trimmomatic \\
         PE \\
-        -trimlog ${prefix}.log \\
-        -summary ${prefix}.summary \\
+        -trimlog ${sample}.log \\
+        -summary ${sample}.summary \\
         $reads \\
-        ${prefix}.paired.trim_1.fastq.gz \\
-        ${prefix}.unpaired.trim_1.fastq.gz \\
-        ${prefix}.paired.trim_2.fastq.gz \\
-        ${prefix}.unpaired.trim_2.fastq.gz" \\
+        ${sample}.paired.trim_1.fastq.gz \\
+        ${sample}.unpaired.trim_1.fastq.gz \\
+        ${sample}.paired.trim_2.fastq.gz \\
+        ${sample}.unpaired.trim_2.fastq.gz" \\
         ILLUMINACLIP:TruSeq3-PE.fa:2:30:10:2:True \\
         LEADING:3 \\
         TRAILING:3 \\
         MINLEN:36
-
 	"""
 }
