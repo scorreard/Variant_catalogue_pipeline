@@ -12,6 +12,7 @@
 
 // Load the modules for the mapping workflow
 include { align_sort_output_bam } from "./../modules/align_sort_output_bam"
+include { TRIMMOMATIC } from "./../modules/trimmomatic"
 include { bwa_index } from "./../modules/bwa_index"
 
 include {fastqc} from "./../modules/fastqc"
@@ -39,6 +40,12 @@ workflow Mapping {
 
 	main:
 		bwa_index(reference)
+	//With trimmomatic 
+	//	TRIMMOMATIC(read_pairs_ch)
+	//	ch_trim  = Channel.empty()
+	//	ch_trim = TRIMMOMATIC.out.trimmed_reads
+	//	align_sort_output_bam(reference, bwa_index.out, ch_trim, assembly, batch, run)
+	//Without trimmomatic
 		align_sort_output_bam(reference, bwa_index.out, read_pairs_ch, assembly, batch, run)
 
                 q1              = fastqc(read_pairs_ch, outdir_ind, assembly, batch, run)
